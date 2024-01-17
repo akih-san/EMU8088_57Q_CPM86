@@ -11,8 +11,12 @@ I/Oが8ピン多いのが特徴です。<br>
 メモリはAS6C4008(512kw x 8bit)を2個使用し、8088/V20のフル空間<br>
 （1MB）上で、CP/M-86が動作します。（将来的には、MS-DOSを動かしたい）<br>
 <br>
-# EMU8088/V20_57Q Rev1.5 SBCボード<br>
-![photo 1](photo/P1020470.JPG)
+EMU8088/V20_57Q Rev1.5 SBCボード<br>
+
+![EMU8088 1](photo/P1020470.JPG)
+<br>
+EMU8088/V20_57Q Rev1.5 SBCボード<br>
+
 
 @hanyazouさんが作成したZ80で動作しているCP/M-80のFWをベースに<br>
 EMU8088/V20_57Q0用のFWとして動作するように修正を加え、CP/M-86を<br>
