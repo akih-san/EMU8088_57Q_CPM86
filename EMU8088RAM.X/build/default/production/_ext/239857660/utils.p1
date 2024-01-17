@@ -1,0 +1,284 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"107 C:\Program Files\Microchip\xc8\v2.41\pic\include\c99\stdio.h
+[; ;C:\Program Files\Microchip\xc8\v2.41\pic\include\c99\stdio.h: 107: int printf(const char *restrict, ...);
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"23 C:\Program Files\Microchip\xc8\v2.41\pic\include\c99\ctype.h
+[; ;C:\Program Files\Microchip\xc8\v2.41\pic\include\c99\ctype.h: 23: int toupper(int);
+[v _toupper `(i ~T0 @X0 0 ef1`i ]
+"29 ../drivers/utils.c
+[; ;../drivers/utils.c: 29: void util_hexdump(const char *header, const void *addr, unsigned int size)
+[v _util_hexdump `(v ~T0 @X0 1 ef3`*Cuc`*Cv`ui ]
+"30
+[; ;../drivers/utils.c: 30: {
+{
+[e :U _util_hexdump ]
+"29
+[; ;../drivers/utils.c: 29: void util_hexdump(const char *header, const void *addr, unsigned int size)
+[v _header `*Cuc ~T0 @X0 1 r1 ]
+[v _addr `*Cv ~T0 @X0 1 r2 ]
+[v _size `ui ~T0 @X0 1 r3 ]
+"30
+[; ;../drivers/utils.c: 30: {
+[f ]
+"31
+[; ;../drivers/utils.c: 31:     char chars[17];
+[v _chars `uc ~T0 @X0 -> 17 `i a ]
+"32
+[; ;../drivers/utils.c: 32:     const uint8_t *buf = addr;
+[v _buf `*Cuc ~T0 @X0 1 a ]
+[e = _buf -> _addr `*Cuc ]
+"33
+[; ;../drivers/utils.c: 33:     size = ((size + 15) & ~0xfU);
+[e = _size & + _size -> -> 15 `i `ui ~ -> 15 `ui ]
+"34
+[; ;../drivers/utils.c: 34:     for (int i = 0; i < size; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 8  ]
+[e :U 5 ]
+{
+"35
+[; ;../drivers/utils.c: 35:         if ((i % 16) == 0)
+[e $ ! == % _i -> 16 `i -> 0 `i 9  ]
+"36
+[; ;../drivers/utils.c: 36:             printf("%s%04x:", header, i);
+[e ( _printf , , (. :s 1C _header _i ]
+[e :U 9 ]
+"37
+[; ;../drivers/utils.c: 37:         printf(" %02x", buf[i]);
+[e ( _printf , (. :s 2C -> *U + _buf * -> _i `x -> -> # *U _buf `i `x `i ]
+"38
+[; ;../drivers/utils.c: 38:         if (0x20 <= buf[i] && buf[i] <= 0x7e) {
+[e $ ! && <= -> 32 `i -> *U + _buf * -> _i `x -> -> # *U _buf `i `x `i <= -> *U + _buf * -> _i `x -> -> # *U _buf `i `x `i -> 126 `i 10  ]
+{
+"39
+[; ;../drivers/utils.c: 39:             chars[i % 16] = buf[i];
+[e = *U + &U _chars * -> -> % _i -> 16 `i `ui `ux -> -> # *U &U _chars `ui `ux -> *U + _buf * -> _i `x -> -> # *U _buf `i `x `uc ]
+"40
+[; ;../drivers/utils.c: 40:         } else {
+}
+[e $U 11  ]
+[e :U 10 ]
+{
+"41
+[; ;../drivers/utils.c: 41:             chars[i % 16] = '.';
+[e = *U + &U _chars * -> -> % _i -> 16 `i `ui `ux -> -> # *U &U _chars `ui `ux -> -> 46 `ui `uc ]
+"42
+[; ;../drivers/utils.c: 42:         }
+}
+[e :U 11 ]
+"43
+[; ;../drivers/utils.c: 43:         if ((i % 16) == 15) {
+[e $ ! == % _i -> 16 `i -> 15 `i 12  ]
+{
+"44
+[; ;../drivers/utils.c: 44:             chars[16] = '\0';
+[e = *U + &U _chars * -> -> -> 16 `i `ui `ux -> -> # *U &U _chars `ui `ux -> -> 0 `ui `uc ]
+"45
+[; ;../drivers/utils.c: 45:             printf(" %s\n\r", chars);
+[e ( _printf , (. :s 3C &U _chars ]
+"46
+[; ;../drivers/utils.c: 46:         }
+}
+[e :U 12 ]
+"47
+[; ;../drivers/utils.c: 47:     }
+}
+[e ++ _i -> 1 `i ]
+[e :U 8 ]
+[e $ < -> _i `ui _size 5  ]
+[e :U 6 ]
+}
+"48
+[; ;../drivers/utils.c: 48: }
+[e :UE 4 ]
+}
+"50
+[; ;../drivers/utils.c: 50: void util_addrdump(const char *header, uint32_t addr_offs, const void *addr, unsigned int size)
+[v _util_addrdump `(v ~T0 @X0 1 ef4`*Cuc`ul`*Cv`ui ]
+"51
+[; ;../drivers/utils.c: 51: {
+{
+[e :U _util_addrdump ]
+"50
+[; ;../drivers/utils.c: 50: void util_addrdump(const char *header, uint32_t addr_offs, const void *addr, unsigned int size)
+[v _header `*Cuc ~T0 @X0 1 r1 ]
+[v _addr_offs `ul ~T0 @X0 1 r2 ]
+[v _addr `*Cv ~T0 @X0 1 r3 ]
+[v _size `ui ~T0 @X0 1 r4 ]
+"51
+[; ;../drivers/utils.c: 51: {
+[f ]
+"52
+[; ;../drivers/utils.c: 52:     char chars[17];
+[v _chars `uc ~T0 @X0 -> 17 `i a ]
+"53
+[; ;../drivers/utils.c: 53:     const uint8_t *buf = addr;
+[v _buf `*Cuc ~T0 @X0 1 a ]
+[e = _buf -> _addr `*Cuc ]
+"54
+[; ;../drivers/utils.c: 54:     size = ((size + 15) & ~0xfU);
+[e = _size & + _size -> -> 15 `i `ui ~ -> 15 `ui ]
+"55
+[; ;../drivers/utils.c: 55:     for (unsigned int i = 0; i < size; i++) {
+{
+[v _i `ui ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `ui ]
+[e $U 17  ]
+[e :U 14 ]
+{
+"56
+[; ;../drivers/utils.c: 56:         if ((i % 16) == 0)
+[e $ ! == % _i -> -> 16 `i `ui -> -> 0 `i `ui 18  ]
+"57
+[; ;../drivers/utils.c: 57:             printf("%s%06lx:", header, addr_offs + i);
+[e ( _printf , , (. :s 4C _header + _addr_offs -> _i `ul ]
+[e :U 18 ]
+"58
+[; ;../drivers/utils.c: 58:         printf(" %02x", buf[i]);
+[e ( _printf , (. :s 5C -> *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux `i ]
+"59
+[; ;../drivers/utils.c: 59:         if (0x20 <= buf[i] && buf[i] <= 0x7e) {
+[e $ ! && <= -> 32 `i -> *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux `i <= -> *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux `i -> 126 `i 19  ]
+{
+"60
+[; ;../drivers/utils.c: 60:             chars[i % 16] = buf[i];
+[e = *U + &U _chars * -> % _i -> -> 16 `i `ui `ux -> -> # *U &U _chars `ui `ux -> *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux `uc ]
+"61
+[; ;../drivers/utils.c: 61:         } else {
+}
+[e $U 20  ]
+[e :U 19 ]
+{
+"62
+[; ;../drivers/utils.c: 62:             chars[i % 16] = '.';
+[e = *U + &U _chars * -> % _i -> -> 16 `i `ui `ux -> -> # *U &U _chars `ui `ux -> -> 46 `ui `uc ]
+"63
+[; ;../drivers/utils.c: 63:         }
+}
+[e :U 20 ]
+"64
+[; ;../drivers/utils.c: 64:         if ((i % 16) == 15) {
+[e $ ! == % _i -> -> 16 `i `ui -> -> 15 `i `ui 21  ]
+{
+"65
+[; ;../drivers/utils.c: 65:             chars[16] = '\0';
+[e = *U + &U _chars * -> -> -> 16 `i `ui `ux -> -> # *U &U _chars `ui `ux -> -> 0 `ui `uc ]
+"66
+[; ;../drivers/utils.c: 66:             printf(" %s\n\r", chars);
+[e ( _printf , (. :s 6C &U _chars ]
+"67
+[; ;../drivers/utils.c: 67:         }
+}
+[e :U 21 ]
+"68
+[; ;../drivers/utils.c: 68:     }
+}
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 17 ]
+[e $ < _i _size 14  ]
+[e :U 15 ]
+}
+"69
+[; ;../drivers/utils.c: 69: }
+[e :UE 13 ]
+}
+"71
+[; ;../drivers/utils.c: 71: void util_hexdump_sum(const char *header, const void *addr, unsigned int size)
+[v _util_hexdump_sum `(v ~T0 @X0 1 ef3`*Cuc`*Cv`ui ]
+"72
+[; ;../drivers/utils.c: 72: {
+{
+[e :U _util_hexdump_sum ]
+"71
+[; ;../drivers/utils.c: 71: void util_hexdump_sum(const char *header, const void *addr, unsigned int size)
+[v _header `*Cuc ~T0 @X0 1 r1 ]
+[v _addr `*Cv ~T0 @X0 1 r2 ]
+[v _size `ui ~T0 @X0 1 r3 ]
+"72
+[; ;../drivers/utils.c: 72: {
+[f ]
+"73
+[; ;../drivers/utils.c: 73:     util_hexdump(header, addr, size);
+[e ( _util_hexdump (3 , , _header _addr _size ]
+"75
+[; ;../drivers/utils.c: 75:     uint8_t sum = 0;
+[v _sum `uc ~T0 @X0 1 a ]
+[e = _sum -> -> 0 `i `uc ]
+"76
+[; ;../drivers/utils.c: 76:     const uint8_t *p = addr;
+[v _p `*Cuc ~T0 @X0 1 a ]
+[e = _p -> _addr `*Cuc ]
+"77
+[; ;../drivers/utils.c: 77:     for (int i = 0; i < size; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 26  ]
+[e :U 23 ]
+"78
+[; ;../drivers/utils.c: 78:         sum += *p++;
+[e =+ _sum -> *U ++ _p * -> -> 1 `i `x -> -> # *U _p `i `x `uc ]
+[e ++ _i -> 1 `i ]
+[e :U 26 ]
+[e $ < -> _i `ui _size 23  ]
+[e :U 24 ]
+}
+"79
+[; ;../drivers/utils.c: 79:     printf("%s%53s CHECKSUM: %02x\n\r", header, "", sum);
+[e ( _printf , , , (. :s 7C _header :s 8C -> _sum `i ]
+"80
+[; ;../drivers/utils.c: 80: }
+[e :UE 22 ]
+}
+"82
+[; ;../drivers/utils.c: 82: int util_stricmp(const char *a, const char *b)
+[v _util_stricmp `(i ~T0 @X0 1 ef2`*Cuc`*Cuc ]
+"83
+[; ;../drivers/utils.c: 83: {
+{
+[e :U _util_stricmp ]
+"82
+[; ;../drivers/utils.c: 82: int util_stricmp(const char *a, const char *b)
+[v _a `*Cuc ~T0 @X0 1 r1 ]
+[v _b `*Cuc ~T0 @X0 1 r2 ]
+"83
+[; ;../drivers/utils.c: 83: {
+[f ]
+"84
+[; ;../drivers/utils.c: 84:   int ua, ub;
+[v _ua `i ~T0 @X0 1 a ]
+[v _ub `i ~T0 @X0 1 a ]
+"85
+[; ;../drivers/utils.c: 85:   do {
+[e :U 30 ]
+{
+"86
+[; ;../drivers/utils.c: 86:       ua = toupper((unsigned char)*a++);
+[e = _ua ( _toupper (1 -> -> *U ++ _a * -> -> 1 `i `x -> -> # *U _a `i `x `uc `i ]
+"87
+[; ;../drivers/utils.c: 87:       ub = toupper((unsigned char)*b++);
+[e = _ub ( _toupper (1 -> -> *U ++ _b * -> -> 1 `i `x -> -> # *U _b `i `x `uc `i ]
+"88
+[; ;../drivers/utils.c: 88:    } while (ua == ub && ua != '\0');
+}
+[e $ && == _ua _ub != -> _ua `ui -> 0 `ui 30  ]
+[e :U 29 ]
+"89
+[; ;../drivers/utils.c: 89:    return ua - ub;
+[e ) - _ua _ub ]
+[e $UE 27  ]
+"90
+[; ;../drivers/utils.c: 90: }
+[e :UE 27 ]
+}
+[p f _printf 12877844 ]
+[a 2C 32 37 48 50 120 0 ]
+[a 5C 32 37 48 50 120 0 ]
+[a 4C 37 115 37 48 54 108 120 58 0 ]
+[a 1C 37 115 37 48 52 120 58 0 ]
+[a 7C 37 115 37 53 51 115 32 67 72 69 67 75 83 85 77 58 32 37 48 50 120 10 13 0 ]
+[a 3C 32 37 115 10 13 0 ]
+[a 6C 32 37 115 10 13 0 ]
+[a 8C 0 ]
