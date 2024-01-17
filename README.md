@@ -13,12 +13,21 @@ I/Oが8ピン多いのが特徴です。<br>
 <br>
 EMU8088/V20_57Q Rev1.5 SBCボード<br>
 
-![EMU8088 1](photo/P1020470.JPG)
-<br>
+![EMU8088 1](photo/8088_RAM_R.1.5.png)
+![EMU8088 2](photo/P1020471.JPG)
+
+
+Rev1.4とRev1.5(左側がRev1.4）
+
+![EMU8088 2](photo/P1020472.JPG)
+
+
+
 CP/M-86起動画面<br>
 
 ![EMU8088 1](photo/p224950.png)
 
+# ファームウェア
 @hanyazouさんが作成したZ80で動作しているCP/M-80のFWをベースに<br>
 EMU8088/V20_57Q0用のFWとして動作するように修正を加え、CP/M-86を<br>
 インプリメントしました。<br>
