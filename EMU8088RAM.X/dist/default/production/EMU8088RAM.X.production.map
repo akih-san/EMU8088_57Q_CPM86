@@ -6,10 +6,10 @@ Linker command line:
   --edf=C:/Users/TBS/.mchp_packs/Microchip/PIC18F-Q_DFP/1.23.425/xc8\pic\dat\20231017160250_en.msgs \
   -pivt0x8=08h -cn -h+dist/default/production\EMU8088RAM.X.production.sym \
   --cmf=dist/default/production\EMU8088RAM.X.production.cmf -z -Q18F57Q43 \
-  -oC:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_3.o \
+  -oC:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
   -Mdist/default/production/EMU8088RAM.X.production.map \
-  --md=C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_0.dat -E1 \
+  --md=C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_0.dat -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ACODE=00h-01FFFFh -ACONST=00h-01FFFFh \
   -ASMALLCONST=02600h-026FFhx474 \
   -AMEDIUMCONST=02600h-0FFFFh,012600h-01FFFFh -ACOMRAM=0501h-055Fh \
@@ -35,7 +35,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o \
+  C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o \
   dist/default/production\EMU8088RAM.X.production.o 
 
 Object code version is 3.11
@@ -45,13 +45,13 @@ Machine type is 18F57Q43
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
                 config                           300000   300000        A        0       4
                 init                                102      102        4        4       0
                 reset_vec                             0        0        4        0       0
 dist/default/production\EMU8088RAM.X.production.o
                 config                           300000   300000        A        0       4
-                mediumconst                        C4E0     C4E0     3B20     6270       0
+                mediumconst                        C16E     C16E     3E92     60B7       0
                 ivt0x8                                8        8       FA        4       0
                 text149                           1DDEA    1DDEA        4     EEDE       0
                 text148                           1D054    1D054       80     7415       0
@@ -389,7 +389,7 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   SMALLCONST     
 
         CLASS   MEDIUMCONST    
-                mediumconst                        C4E0     C4E0     3B20         0
+                mediumconst                        C16E     C16E     3E92         0
 
         CLASS   COMRAM         
                 cstackCOMRAM                        501      501       55         1
@@ -510,7 +510,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 bssBANK9                       000900  000080  000980       900       1  BANK9   
                 bssBANK10                      000A00  000100  000B00       A00       1  BANK10  
                 bssBIGRAM                      000B00  0010FC  001BFC       B00       1  BIGRAM  
-                mediumconst                    00C4E0  003B20  010000      6270       0  MEDIUMCO
+                mediumconst                    00C16E  003E92  010000      60B7       0  MEDIUMCO
                 text41                         010000  00D052  01D052      8000       0  CODE    
                 text148                        01D054  000D67  01DDBB      7415       0  CODE    
                 text54                         01DDBC  000032  01DDEE      EEDE       0  CODE    
@@ -543,7 +543,7 @@ UNUSED ADDRESS RANGES
         BIGSFR           000000-0004FF              500
                          002500-0025FF              100
         CODE             000004-000007                4
-                         000106-00C4DF             C3DA
+                         000106-00C16D             C068
                          01D052-01D053                2
                          01DDBB-01DDBB                1
                          01DDEE-01DDEF                2
@@ -551,14 +551,14 @@ UNUSED ADDRESS RANGES
         COMRAM           00055B-00055F                5
         CONFIG           30000A-300011                8
         CONST            000004-000007                4
-                         000106-00C4DF             C3DA
+                         000106-00C16D             C068
                          01D052-01D053                2
                          01DDBB-01DDBB                1
                          01DDEE-01DDEF                2
                          01DDF2-01FFFF             220E
         EEDATA           380000-3803FF              400
         IDLOC            200000-20003F               40
-        MEDIUMCONST      002600-00C4DF             9EE0
+        MEDIUMCONST      002600-00C16D             9B6E
                          01D052-01D053                2
                          01DDBB-01DDBB                1
                          01DDEE-01DDEF                2
@@ -570,7 +570,7 @@ UNUSED ADDRESS RANGES
                          001BFC-0024FF              100
         SFR              000000-0004FF              100
                          002500-0025FF              100
-        SMALLCONST       002600-00C4DF              100
+        SMALLCONST       002600-00C16D              100
                          01D052-01D053                2
                          01DDBB-01DDBB                1
                          01DDEE-01DDEF                2
@@ -729,7 +729,7 @@ _CLCnSEL0                                 (abs)        0000D8
 _CLCnSEL1                                 (abs)        0000D9
 _CLCnSEL2                                 (abs)        0000DA
 _CLCnSEL3                                 (abs)        0000DB
-_DbcTbl                                   mediumconst  00C4E1
+_DbcTbl                                   mediumconst  00C16F
 _Default_ISR                              text147      01DDF0
 _FatFs                                    bssBANK6     0006E2
 _Fsid                                     bssBANK7     000712
@@ -1185,7 +1185,7 @@ __Linit                                   init         000102
 __Lintsave_regs                           intsave_regs 000000
 __Lirdata                                 irdata       000000
 __Livt0x8                                 ivt0x8       000008
-__Lmediumconst                            mediumconst  00C4E0
+__Lmediumconst                            mediumconst  00C16E
 __LnvBANK6                                nvBANK6      000000
 __LnvBANK7                                nvBANK7      000000
 __LnvFARRAM                               nvFARRAM     000000
@@ -1466,7 +1466,7 @@ ___xxtofl@sign                            cstackCOMRAM 00050E
 ___xxtofl@val                             cstackCOMRAM 000506
 __accesstop                               (abs)        000560
 __activetblptr                            (abs)        000003
-__end_of_DbcTbl                           mediumconst  00C4EB
+__end_of_DbcTbl                           mediumconst  00C179
 __end_of_Default_ISR                      text147      01DDF2
 __end_of_SDCard_command                   text8        01D150
 __end_of_SDCard_crc                       text132      01CFD2
@@ -1583,7 +1583,7 @@ __end_of_memset                           text70       01AE32
 __end_of_menu_select                      text14       014B98
 __end_of_mount_volume                     text41       010AC4
 __end_of_move_window                      text83       01C548
-__end_of_num_drives                       mediumconst  00C4ED
+__end_of_num_drives                       mediumconst  00C17B
 __end_of_pad                              text118      01CBE8
 __end_of_printf                           text90       01DC4A
 __end_of_put_fat                          text79       0146D4
@@ -1595,9 +1595,9 @@ __end_of_remove_chain                     text23       018C60
 __end_of_reset_hold_pin                   text64       01DDEA
 __end_of_reset_io_read_mask               text53       01DDB0
 __end_of_reset_ready_pin                  text52       01DDA4
-__end_of_rom0                             mediumconst  00E9E2
-__end_of_rom1                             mediumconst  00F762
-__end_of_rom2                             mediumconst  00F4E2
+__end_of_rom0                             mediumconst  00E670
+__end_of_rom1                             mediumconst  00F761
+__end_of_rom2                             mediumconst  00F170
 __end_of_set_hold_pin                     text49       01DDDA
 __end_of_sprintf                          text16       01D60C
 __end_of_st_clust                         text72       01D6F8
@@ -1623,7 +1623,7 @@ __end_of_vfprintf                         text91       01D4C4
 __end_of_write_sram                       text61       01B4E6
 __end_of_xtoa                             text93       019E8C
 __initialization                          cinit        01C20A
-__mediumconst                             mediumconst  00C4E0
+__mediumconst                             mediumconst  00C16E
 __pbssBANK10                              bssBANK10    000A00
 __pbssBANK6                               bssBANK6     0006DB
 __pbssBANK7                               bssBANK7     000700
@@ -1643,7 +1643,7 @@ __pidataBANK6                             idataBANK6   01DDD2
 __pidataBANK7                             idataBANK7   01DDB0
 __pidataBANK8                             idataBANK8   01D922
 __pivt0x8                                 ivt0x8       000008
-__pmediumconst                            mediumconst  00C4E0
+__pmediumconst                            mediumconst  00C16E
 __pnvBANK6                                nvBANK6      0006FC
 __pnvBANK7                                nvBANK7      0007AB
 __ptext0                                  text0        018E7C
@@ -1939,9 +1939,9 @@ _remove_chain                             text23       018A2E
 _reset_hold_pin                           text64       01DDE6
 _reset_io_read_mask                       text53       01DDA4
 _reset_ready_pin                          text52       01DD98
-_rom0                                     mediumconst  00C4ED
-_rom1                                     mediumconst  00F4E2
-_rom2                                     mediumconst  00E9E2
+_rom0                                     mediumconst  00C17B
+_rom1                                     mediumconst  00F170
+_rom2                                     mediumconst  00E670
 _rx_buf                                   bssBANK10    000A00
 _rx_cnt                                   bssBANK6     0006EC
 _rx_rp                                    bssBANK6     0006EE
@@ -2648,13 +2648,13 @@ C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\fleq.c estimated siz
 
 shared
 		_num_drives    		MEDIUMCONST    	0000	0000	0
-		_DbcTbl        		MEDIUMCONST    	C4E1	0000	10
-		_rom0          		MEDIUMCONST    	C4ED	0000	9461
+		_DbcTbl        		MEDIUMCONST    	C16F	0000	10
+		_rom0          		MEDIUMCONST    	C17B	0000	9461
 		__initialization		CODE           	1C20A	0000	208
-		_rom1          		MEDIUMCONST    	F4E2	0000	640
-		_rom2          		MEDIUMCONST    	E9E2	0000	2816
+		_rom1          		MEDIUMCONST    	F170	0000	1521
+		_rom2          		MEDIUMCONST    	E670	0000	2816
 
-shared estimated size: 13135
+shared estimated size: 14016
 
 ../src/boards/EMU88RAM.c
 		_board_event_loop		CODE           	1DB4C	0000	44

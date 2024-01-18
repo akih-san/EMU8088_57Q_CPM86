@@ -11,10 +11,6 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
-init CODE 0 102 102 4 1 2
-reset_vec CODE 0 0 0 4 1 2
-config CONFIG 4 300000 300000 A 1 1
 $dist/default/production\EMU8088RAM.X.production.o
 ivt0x8 CODE 0 8 8 FA 1 2
 cinit CODE 0 1C20A 1C20A D6 1 2
@@ -187,7 +183,11 @@ text149 CODE 0 1DDEA 1DDEA 4 1 2
 bssBANK10 BANK10 1 A00 A00 100 1 1
 bssBIGRAM BIGRAM 1 B00 B00 10FC 1 1
 bssCOMRAM COMRAM 1 556 556 5 1 1
-mediumconst MEDIUMCONST 0 C4E0 C4E0 3B20 1 2
+mediumconst MEDIUMCONST 0 C16E C16E 3E92 1 2
+config CONFIG 4 300000 300000 A 1 1
+$C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
+init CODE 0 102 102 4 1 2
+reset_vec CODE 0 0 0 4 1 2
 config CONFIG 4 300000 300000 A 1 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -207,19 +207,19 @@ BANK7 7D7-7FF 1
 BANK8 890-8FF 1
 BANK9 980-9FF 1
 CONST 4-7 1
-CONST 106-C4DF 1
+CONST 106-C16D 1
 CONST 1D052-1D053 1
 CONST 1DDBB-1DDBB 1
 CONST 1DDEE-1DDEF 1
 CONST 1DDF2-1FFFF 1
 IDLOC 200000-20003F 1
-SMALLCONST 2600-C4DF 1
+SMALLCONST 2600-C16D 1
 SMALLCONST 1D052-1D053 1
 SMALLCONST 1DDBB-1DDBB 1
 SMALLCONST 1DDEE-1DDEF 1
 SMALLCONST 1DDF2-1FFFF 1
 CODE 4-7 1
-CODE 106-C4DF 1
+CODE 106-C16D 1
 CODE 1D052-1D053 1
 CODE 1DDBB-1DDBB 1
 CODE 1DDEE-1DDEF 1
@@ -245,7 +245,7 @@ BIGSFR 2500-25FF 1
 COMRAM 55B-55F 1
 CONFIG 30000A-300011 1
 EEDATA 380000-3803FF 1
-MEDIUMCONST 2600-C4DF 1
+MEDIUMCONST 2600-C16D 1
 MEDIUMCONST 1D052-1D053 1
 MEDIUMCONST 1DDBB-1DDBB 1
 MEDIUMCONST 1DDEE-1DDEF 1
@@ -3118,108 +3118,108 @@ $dist/default/production\EMU8088RAM.X.production.o
 19086 text0 CODE >111:C:\Users\TBS\akihito\8088\EMU8088_RAM\EMU8088_CPM86/src/emu88_main.c
 1908A text0 CODE >113:C:\Users\TBS\akihito\8088\EMU8088_RAM\EMU8088_CPM86/src/emu88_main.c
 1908E text0 CODE >115:C:\Users\TBS\akihito\8088\EMU8088_RAM\EMU8088_CPM86/src/emu88_main.c
-1C20A cinit CODE >26563:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C20A cinit CODE >26565:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C20A cinit CODE >26568:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C20A cinit CODE >26703:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C20C cinit CODE >26704:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C20E cinit CODE >26705:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C210 cinit CODE >26706:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C212 cinit CODE >26707:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C214 cinit CODE >26708:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C216 cinit CODE >26709:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C21A cinit CODE >26710:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C21E cinit CODE >26711:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C21E cinit CODE >26712:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C220 cinit CODE >26713:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C224 cinit CODE >26714:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C226 cinit CODE >26715:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C228 cinit CODE >26716:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C22A cinit CODE >26720:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C22C cinit CODE >26721:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C22E cinit CODE >26722:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C230 cinit CODE >26723:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C232 cinit CODE >26724:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C234 cinit CODE >26725:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C236 cinit CODE >26726:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C23A cinit CODE >26727:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C23E cinit CODE >26728:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C23E cinit CODE >26729:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C240 cinit CODE >26730:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C244 cinit CODE >26731:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C246 cinit CODE >26732:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C248 cinit CODE >26733:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C24A cinit CODE >26737:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C24C cinit CODE >26738:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C24E cinit CODE >26739:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C250 cinit CODE >26740:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C252 cinit CODE >26741:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C254 cinit CODE >26742:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C256 cinit CODE >26743:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C25A cinit CODE >26744:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C25E cinit CODE >26745:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C25E cinit CODE >26746:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C260 cinit CODE >26747:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C264 cinit CODE >26748:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C266 cinit CODE >26749:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C268 cinit CODE >26750:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C26A cinit CODE >26754:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C26E cinit CODE >26755:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C272 cinit CODE >26756:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C272 cinit CODE >26757:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C274 cinit CODE >26758:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C276 cinit CODE >26759:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C278 cinit CODE >26760:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C27A cinit CODE >26761:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C27C cinit CODE >26762:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C27E cinit CODE >26765:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C282 cinit CODE >26766:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C286 cinit CODE >26767:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C286 cinit CODE >26768:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C288 cinit CODE >26769:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C28A cinit CODE >26770:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C28C cinit CODE >26771:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C28E cinit CODE >26772:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C290 cinit CODE >26773:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C292 cinit CODE >26776:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C296 cinit CODE >26777:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C298 cinit CODE >26778:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C298 cinit CODE >26779:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C29A cinit CODE >26780:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C29C cinit CODE >26781:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C29E cinit CODE >26784:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2A2 cinit CODE >26785:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2A4 cinit CODE >26786:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2A4 cinit CODE >26787:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2A6 cinit CODE >26788:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2A8 cinit CODE >26789:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2AA cinit CODE >26792:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2AE cinit CODE >26793:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2B0 cinit CODE >26794:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2B0 cinit CODE >26795:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2B2 cinit CODE >26796:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2B4 cinit CODE >26797:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2B6 cinit CODE >26800:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2BA cinit CODE >26801:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2BC cinit CODE >26802:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2BC cinit CODE >26803:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2BE cinit CODE >26804:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2C0 cinit CODE >26805:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2C2 cinit CODE >26808:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2C4 cinit CODE >26809:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2C6 cinit CODE >26810:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2C8 cinit CODE >26811:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2CA cinit CODE >26812:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2CC cinit CODE >26820:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2CE cinit CODE >26821:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2D0 cinit CODE >26822:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2D2 cinit CODE >26823:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2D4 cinit CODE >26824:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2D6 cinit CODE >26825:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2D8 cinit CODE >26826:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2DA cinit CODE >26832:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2DA cinit CODE >26834:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
-1C2DC cinit CODE >26835:C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_1.s
+1C20A cinit CODE >27444:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C20A cinit CODE >27446:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C20A cinit CODE >27449:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C20A cinit CODE >27584:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C20C cinit CODE >27585:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C20E cinit CODE >27586:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C210 cinit CODE >27587:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C212 cinit CODE >27588:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C214 cinit CODE >27589:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C216 cinit CODE >27590:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C21A cinit CODE >27591:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C21E cinit CODE >27592:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C21E cinit CODE >27593:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C220 cinit CODE >27594:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C224 cinit CODE >27595:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C226 cinit CODE >27596:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C228 cinit CODE >27597:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C22A cinit CODE >27601:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C22C cinit CODE >27602:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C22E cinit CODE >27603:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C230 cinit CODE >27604:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C232 cinit CODE >27605:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C234 cinit CODE >27606:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C236 cinit CODE >27607:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C23A cinit CODE >27608:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C23E cinit CODE >27609:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C23E cinit CODE >27610:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C240 cinit CODE >27611:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C244 cinit CODE >27612:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C246 cinit CODE >27613:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C248 cinit CODE >27614:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C24A cinit CODE >27618:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C24C cinit CODE >27619:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C24E cinit CODE >27620:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C250 cinit CODE >27621:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C252 cinit CODE >27622:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C254 cinit CODE >27623:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C256 cinit CODE >27624:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C25A cinit CODE >27625:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C25E cinit CODE >27626:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C25E cinit CODE >27627:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C260 cinit CODE >27628:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C264 cinit CODE >27629:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C266 cinit CODE >27630:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C268 cinit CODE >27631:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C26A cinit CODE >27635:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C26E cinit CODE >27636:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C272 cinit CODE >27637:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C272 cinit CODE >27638:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C274 cinit CODE >27639:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C276 cinit CODE >27640:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C278 cinit CODE >27641:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C27A cinit CODE >27642:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C27C cinit CODE >27643:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C27E cinit CODE >27646:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C282 cinit CODE >27647:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C286 cinit CODE >27648:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C286 cinit CODE >27649:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C288 cinit CODE >27650:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C28A cinit CODE >27651:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C28C cinit CODE >27652:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C28E cinit CODE >27653:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C290 cinit CODE >27654:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C292 cinit CODE >27657:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C296 cinit CODE >27658:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C298 cinit CODE >27659:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C298 cinit CODE >27660:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C29A cinit CODE >27661:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C29C cinit CODE >27662:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C29E cinit CODE >27665:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2A2 cinit CODE >27666:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2A4 cinit CODE >27667:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2A4 cinit CODE >27668:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2A6 cinit CODE >27669:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2A8 cinit CODE >27670:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2AA cinit CODE >27673:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2AE cinit CODE >27674:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2B0 cinit CODE >27675:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2B0 cinit CODE >27676:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2B2 cinit CODE >27677:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2B4 cinit CODE >27678:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2B6 cinit CODE >27681:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2BA cinit CODE >27682:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2BC cinit CODE >27683:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2BC cinit CODE >27684:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2BE cinit CODE >27685:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2C0 cinit CODE >27686:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2C2 cinit CODE >27689:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2C4 cinit CODE >27690:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2C6 cinit CODE >27691:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2C8 cinit CODE >27692:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2CA cinit CODE >27693:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2CC cinit CODE >27701:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2CE cinit CODE >27702:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2D0 cinit CODE >27703:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2D2 cinit CODE >27704:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2D4 cinit CODE >27705:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2D6 cinit CODE >27706:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2D8 cinit CODE >27707:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2DA cinit CODE >27713:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2DA cinit CODE >27715:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
+1C2DC cinit CODE >27716:C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_1.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -3241,7 +3241,7 @@ __LdataBANK6 0 0 ABS 0 dataBANK6 dist/default/production\EMU8088RAM.X.production
 __LdataBANK7 0 0 ABS 0 dataBANK7 dist/default/production\EMU8088RAM.X.production.o
 __LdataBANK8 0 0 ABS 0 dataBANK8 dist/default/production\EMU8088RAM.X.production.o
 SDCard_init@initial_clock_speed 5CC 0 BANK5 1 cstackBANK5 dist/default/production\EMU8088RAM.X.production.o
-__Lmediumconst C4E0 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+__Lmediumconst C16E 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
 SDCard_crc@i 50C 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 SDCard_crc@p 50F 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 ___SDCard_command_r1@response 52A 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
@@ -3276,7 +3276,7 @@ _SDCard_read512 17552 0 CODE 0 text88 dist/default/production\EMU8088RAM.X.produ
 util_hexdump_sum@size 5E5 0 BANK5 1 cstackBANK5 dist/default/production\EMU8088RAM.X.production.o
 _board_set_data_pins_hook 6FC 0 BANK6 1 nvBANK6 dist/default/production\EMU8088RAM.X.production.o
 __end_of_move_window 1C548 0 CODE 0 text83 dist/default/production\EMU8088RAM.X.production.o
-__mediumconst C4E0 0 MEDIUMCONST 0 mediumconst C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+__mediumconst C16E 0 MEDIUMCONST 0 mediumconst C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 _bus_master_operation 161CE 0 CODE 0 text60 dist/default/production\EMU8088RAM.X.production.o
 st_dword@ptr 506 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 st_dword@val 508 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
@@ -3311,7 +3311,7 @@ _U3ON 1697 0 ABS 0 - dist/default/production\EMU8088RAM.X.production.o
 _WPUC 411 0 ABS 0 - dist/default/production\EMU8088RAM.X.production.o
 _WPUD 419 0 ABS 0 - dist/default/production\EMU8088RAM.X.production.o
 _WPUF 429 0 ABS 0 - dist/default/production\EMU8088RAM.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+___sp 0 0 STACK 2 stack C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 _ctoa 1C614 0 CODE 0 text123 dist/default/production\EMU8088RAM.X.production.o
 _ctx_ 6DB 0 BANK6 1 bssBANK6 dist/default/production\EMU8088RAM.X.production.o
 _dbuf 800 0 BANK8 1 bssBANK8 dist/default/production\EMU8088RAM.X.production.o
@@ -3319,9 +3319,9 @@ _dtoa 196D0 0 CODE 0 text117 dist/default/production\EMU8088RAM.X.production.o
 _labs 1D29E 0 CODE 0 text106 dist/default/production\EMU8088RAM.X.production.o
 _main 18E7C 0 CODE 0 text0 dist/default/production\EMU8088RAM.X.production.o
 _prec 556 0 COMRAM 1 bssCOMRAM dist/default/production\EMU8088RAM.X.production.o
-_rom0 C4ED 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
-_rom1 F4E2 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
-_rom2 E9E2 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+_rom0 C17B 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+_rom1 F170 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+_rom2 E670 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
 _stoa 1A524 0 CODE 0 text99 dist/default/production\EMU8088RAM.X.production.o
 _xtoa 19CBC 0 CODE 0 text93 dist/default/production\EMU8088RAM.X.production.o
 __end_of_Default_ISR 1DDF2 0 CODE 0 text147 dist/default/production\EMU8088RAM.X.production.o
@@ -3336,7 +3336,7 @@ pad@p 51B 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.productio
 pad@w 520 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 SDCard_read512@result 608 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
 __HbssBIGRAM 0 0 ABS 0 bssBIGRAM dist/default/production\EMU8088RAM.X.production.o
-start 102 0 CODE 0 init C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+start 102 0 CODE 0 init C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 ___flmul@aexp 521 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 ___flmul@bexp 526 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 ___flmul@prod 527 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
@@ -3420,11 +3420,11 @@ __end_of_dir_find 1A9C0 0 CODE 0 text26 dist/default/production\EMU8088RAM.X.pro
 __end_of_dir_next 161CE 0 CODE 0 text34 dist/default/production\EMU8088RAM.X.production.o
 __end_of_dir_read 1A1E4 0 CODE 0 text20 dist/default/production\EMU8088RAM.X.production.o
 _f_closedir 1D9A2 0 CODE 0 text36 dist/default/production\EMU8088RAM.X.production.o
-__accesstop 560 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
-intlevel0 0 0 CODE 0 text C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
-intlevel1 0 0 CODE 0 text C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
-intlevel2 0 0 CODE 0 text C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
-intlevel3 0 0 CODE 0 text C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+__accesstop 560 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
+intlevel0 0 0 CODE 0 text C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
+intlevel1 0 0 CODE 0 text C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
+intlevel2 0 0 CODE 0 text C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
+intlevel3 0 0 CODE 0 text C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 __ptext100 1D60C 0 CODE 0 text100 dist/default/production\EMU8088RAM.X.production.o
 __ptext101 1C3AE 0 CODE 0 text101 dist/default/production\EMU8088RAM.X.production.o
 __ptext102 1DC4A 0 CODE 0 text102 dist/default/production\EMU8088RAM.X.production.o
@@ -3565,8 +3565,8 @@ _ANSELF 428 0 ABS 0 - dist/default/production\EMU8088RAM.X.production.o
 ___SDCard_command_r1@buf 524 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 ___SDCard_command_r1@spi 52B 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 _board_init 1D814 0 CODE 0 text9 dist/default/production\EMU8088RAM.X.production.o
-___inthi_sp 0 0 STACK 2 stack C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
-___intlo_sp 0 0 STACK 2 stack C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 emu88_57q_sys_init@retry 718 0 BANK7 1 bssBANK7 dist/default/production\EMU8088RAM.X.production.o
 dir_alloc@dp 685 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
 dir_alloc@fs 68C 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
@@ -3645,7 +3645,7 @@ util_hexdump@addr 5C6 0 BANK5 1 cstackBANK5 dist/default/production\EMU8088RAM.X
 util_hexdump@size 5C8 0 BANK5 1 cstackBANK5 dist/default/production\EMU8088RAM.X.production.o
 ?_disk_init 6CA 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
 SPI_SD_begin_transaction@ctx_ 50A 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
-_DbcTbl C4E1 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+_DbcTbl C16F 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
 ?_get_ldnumber 506 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 __end_of_dir_alloc 1B3A8 0 CODE 0 text32 dist/default/production\EMU8088RAM.X.production.o
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\EMU8088RAM.X.production.o
@@ -3855,7 +3855,7 @@ __end_of_io_rd_wr 15972 0 CODE 0 text48 dist/default/production\EMU8088RAM.X.pro
 __end_of_printf 1DC4A 0 CODE 0 text90 dist/default/production\EMU8088RAM.X.production.o
 disk_read@i 5F8 0 BANK5 1 cstackBANK5 dist/default/production\EMU8088RAM.X.production.o
 _util_hexdump 1AFA6 0 CODE 0 text63 dist/default/production\EMU8088RAM.X.production.o
-isa$xinst 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+isa$xinst 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 __end_of_disk_status 1CF4E 0 CODE 0 text77 dist/default/production\EMU8088RAM.X.production.o
 _emu88_57q_sys_init 18548 0 CODE 0 text2 dist/default/production\EMU8088RAM.X.production.o
 dir_alloc@n_ent 687 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
@@ -3939,7 +3939,7 @@ __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\EMU8088RAM.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production\EMU8088RAM.X.production.o
 __Hbigsfr 0 0 ABS 0 bigsfr dist/default/production\EMU8088RAM.X.production.o
 ?_get_fattime 506 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 ___xxtofl@arg 510 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 ___xxtofl@exp 50F 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 ___xxtofl@val 506 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
@@ -4416,7 +4416,7 @@ __Lbank33 0 0 ABS 0 bank33 dist/default/production\EMU8088RAM.X.production.o
 __Lbank34 0 0 ABS 0 bank34 dist/default/production\EMU8088RAM.X.production.o
 __Lbank35 0 0 ABS 0 bank35 dist/default/production\EMU8088RAM.X.production.o
 __Lbank36 0 0 ABS 0 bank36 dist/default/production\EMU8088RAM.X.production.o
-__end_of_num_drives C4ED 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+__end_of_num_drives C17B 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
 ___SDCard_wait_response@attempts 517 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\EMU8088RAM.X.production.o
 __Lbigram 0 0 ABS 0 bigram dist/default/production\EMU8088RAM.X.production.o
@@ -4471,7 +4471,7 @@ _strcmp 1D150 0 CODE 0 text15 dist/default/production\EMU8088RAM.X.production.o
 _strcpy 1D858 0 CODE 0 text104 dist/default/production\EMU8088RAM.X.production.o
 _strlen 1D60C 0 CODE 0 text100 dist/default/production\EMU8088RAM.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\EMU8088RAM.X.production.o
-isa$std 1 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+isa$std 1 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 __end_of_SPI_SD_begin_transaction 1DCD6 0 CODE 0 text131 dist/default/production\EMU8088RAM.X.production.o
 ___fldiv@new_exp 53E 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 SPI_SD_receive@i 50F 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
@@ -4480,8 +4480,8 @@ __end_of_board_event_loop 1DB78 0 CODE 0 text47 dist/default/production\EMU8088R
 _put_fat$1703 645 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
 _put_fat$1704 647 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
 SPI_SD_configure@clock_speed 5C6 0 BANK5 1 cstackBANK5 dist/default/production\EMU8088RAM.X.production.o
-stackhi 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
-stacklo 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+stackhi 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
+stacklo 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 SDCard_crc@count 508 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 f_readdir@fno 694 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
 f_readdir@res 698 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
@@ -4717,7 +4717,7 @@ __Ltext99 0 0 ABS 0 text99 dist/default/production\EMU8088RAM.X.production.o
 write_sram@i 510 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 __end_of_check_fs 18284 0 CODE 0 text44 dist/default/production\EMU8088RAM.X.production.o
 __end_of_SPI_SD_configure 1B61E 0 CODE 0 text6 dist/default/production\EMU8088RAM.X.production.o
-__ramtop 2600 0 RAM 0 ramtop C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+__ramtop 2600 0 RAM 0 ramtop C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 ___aldiv@dividend 506 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 _sprintf 1D5BC 0 CODE 0 text16 dist/default/production\EMU8088RAM.X.production.o
 create_chain@cs 667 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
@@ -4772,8 +4772,8 @@ st_clust@fs 50A 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.pro
 _strncmp 1B61E 0 CODE 0 text98 dist/default/production\EMU8088RAM.X.production.o
 f_write@wbuff 684 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
 __end_of_sync_window 1A386 0 CODE 0 text84 dist/default/production\EMU8088RAM.X.production.o
-___heap_hi 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
-___heap_lo 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAscvs.\driver_tmp_14.o
+___heap_hi 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
+___heap_lo 0 0 ABS 0 - C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_14.o
 ___fltol@f1 506 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 _SPI_SD_ctx 7D5 0 BANK7 1 dataBANK7 dist/default/production\EMU8088RAM.X.production.o
 __end_of_URT3Rx_ISR 1D0D4 0 CODE 0 text148 dist/default/production\EMU8088RAM.X.production.o
@@ -4814,7 +4814,7 @@ ___lldiv@quotient 50E 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM
 __pcstackCOMRAM 501 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 util_addrdump@addr_offs 5C6 0 BANK5 1 cstackBANK5 dist/default/production\EMU8088RAM.X.production.o
 ___fpclassifyf@F465 70A 0 BANK7 1 bssBANK7 dist/default/production\EMU8088RAM.X.production.o
-__pmediumconst C4E0 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+__pmediumconst C16E 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
 _write_sram 1B3A8 0 CODE 0 text61 dist/default/production\EMU8088RAM.X.production.o
 _fileinfo 742 0 BANK7 1 bssBANK7 dist/default/production\EMU8088RAM.X.production.o
 _emu88_common_init 1D362 0 CODE 0 text10 dist/default/production\EMU8088RAM.X.production.o
@@ -4833,9 +4833,9 @@ __end_of_ctoa 1C6DE 0 CODE 0 text123 dist/default/production\EMU8088RAM.X.produc
 __end_of_dtoa 198D0 0 CODE 0 text117 dist/default/production\EMU8088RAM.X.production.o
 __end_of_labs 1D304 0 CODE 0 text106 dist/default/production\EMU8088RAM.X.production.o
 __end_of_main 19092 0 CODE 0 text0 dist/default/production\EMU8088RAM.X.production.o
-__end_of_rom0 E9E2 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
-__end_of_rom1 F762 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
-__end_of_rom2 F4E2 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+__end_of_rom0 E670 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+__end_of_rom1 F761 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+__end_of_rom2 F170 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
 __end_of_stoa 1A6B6 0 CODE 0 text99 dist/default/production\EMU8088RAM.X.production.o
 __end_of_xtoa 19E8C 0 CODE 0 text93 dist/default/production\EMU8088RAM.X.production.o
 __Ltext100 0 0 ABS 0 text100 dist/default/production\EMU8088RAM.X.production.o
@@ -5012,7 +5012,7 @@ ___wmul@product 50A 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X
 __Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\EMU8088RAM.X.production.o
 bus_master_operation@n 6A5 0 BANK6 1 cstackBANK6 dist/default/production\EMU8088RAM.X.production.o
 read_sram@i 50E 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
-__end_of_DbcTbl C4EB 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
+__end_of_DbcTbl C179 0 MEDIUMCONST 0 mediumconst dist/default/production\EMU8088RAM.X.production.o
 dtoa@d 524 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 dtoa@i 52F 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
 dtoa@p 52A 0 COMRAM 1 cstackCOMRAM dist/default/production\EMU8088RAM.X.production.o
@@ -5079,7 +5079,7 @@ text147 0 1DDF0 1DDF0 2 1
 text148 0 1D054 1D054 D67 1
 bssBANK10 1 A00 A00 100 1
 bssBIGRAM 1 B00 B00 10FC 1
-mediumconst 0 C4E0 C4E0 3B20 1
+mediumconst 0 C16E C16E 3E92 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal
