@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 227] - Source File unimon_8086.asm - Page 1 - 1/17/2024 0:2:53
+ AS V1.42 Beta [Bld 227] - Source File unimon_8086.asm - Page 1 - 1/18/2024 11:43:33
 
 
        1/       0 :                     	page 0
@@ -1512,87 +1512,88 @@
     1476/     AC4 : C3                  	RET
     1477/     AC5 :                     
     1478/     AC5 :                     CONOUT:
-    1479/     AC5 : 50                  	PUSH	AX
-    1480/     AC6 :                     COUT0:	
-    1481/     AC6 : E4 02               	IN	AL,USARTC
-    1482/     AC8 : 24 02               	and	al, 02h		; check U3TXIF
-    1483/     ACA : 74 FA               	JZ	COUT0
-    1484/     ACC :                     
-    1485/     ACC : 58                  	POP	AX
-    1486/     ACD : E6 00               	OUT	USARTD,AL
-    1487/     ACF : C3                  	RET
-    1488/     AD0 :                     
-    1489/     AD0 : =0AF0H               reset_vec	equ 0ffff0h-MON_CSEG*16
-    1490/     AD0 :                     
-    1491/     AD0 : FF FF FF FF FF FF   	db	reset_vec - $ dup(0FFH)
-              AD6 : FF FF FF FF FF FF 
-              ADC : FF FF FF FF FF FF 
-              AE2 : FF FF FF FF FF FF 
-              AE8 : FF FF FF FF FF FF 
-              AEE : FF FF             
-    1492/     AF0 :                     
-    1493/     AF0 :                     	;;
-    1494/     AF0 :                     	;; Reset entry point
+    1479/     AC5 :                     ;	PUSH	AX
+    1480/     AC5 : 8A E0               	mov	ah, al
+    1481/     AC7 :                     COUT0:	
+    1482/     AC7 : E4 02               	IN	AL,USARTC
+    1483/     AC9 : 24 02               	and	al, 02h		; check U3TXIF
+    1484/     ACB : 74 FA               	JZ	COUT0
+    1485/     ACD :                     
+    1486/     ACD :                     ;	POP	AX
+    1487/     ACD : 8A C4               	mov	al, ah
+    1488/     ACF : E6 00               	OUT	USARTD,AL
+    1489/     AD1 : C3                  	RET
+    1490/     AD2 :                     
+    1491/     AD2 : =0AF0H               reset_vec	equ 0ffff0h-MON_CSEG*16
+    1492/     AD2 :                     
+    1493/     AD2 : FF FF FF FF FF FF   	db	reset_vec - $ dup(0FFH)
+              AD8 : FF FF FF FF FF FF 
+              ADE : FF FF FF FF FF FF 
+              AE4 : FF FF FF FF FF FF 
+              AEA : FF FF FF FF FF FF 
+    1494/     AF0 :                     
     1495/     AF0 :                     	;;
-    1496/     AF0 :                     	
-    1497/     AF0 : EA 00 00 50 FF      	JMPF	MON_CSEG:CSTART
-    1498/     AF5 :                     
-    1499/     AF5 : FF FF FF FF FF FF   	db	10h - ($ & 0fh) dup(0ffh)
+    1496/     AF0 :                     	;; Reset entry point
+    1497/     AF0 :                     	;;
+    1498/     AF0 :                     	
+    1499/     AF0 : EA 00 00 50 FF      	JMPF	MON_CSEG:CSTART
+    1500/     AF5 :                     
+    1501/     AF5 : FF FF FF FF FF FF   	db	10h - ($ & 0fh) dup(0ffh)
               AFB : FF FF FF FF FF    
-    1500/     B00 :                     ;;;
-    1501/     B00 :                     ;;; RAM area
     1502/     B00 :                     ;;;
-    1503/     B00 :                     
-    1504/       0 :                     	SEGMENT	DATA
-    1505/       0 :                     
-    1506/       0 :                     	;;
-    1507/       0 :                     	;; Work area
+    1503/     B00 :                     ;;; RAM area
+    1504/     B00 :                     ;;;
+    1505/     B00 :                     
+    1506/       0 :                     	SEGMENT	DATA
+    1507/       0 :                     
     1508/       0 :                     	;;
-    1509/       0 :                     
-    1510/     100 :                     	ORG	WORK_B
-    1511/     100 :                     
-    1512/     100 :                     INBUF:	DS	BUFLEN	; Line input buffer
-    1513/     150 :                     CURSEG:	DS	2	; Current segment
-    1514/     152 :                     DSADDR:	DS	2	; DUMP start address
-    1515/     154 :                     DEADDR:	DS	2	; DUMP end address
-    1516/     156 :                     DSTATE:	DS	1	; DUMP state
-    1517/     157 :                     	ALIGN	2
-    1518/     158 :                     GADDR:	DS	2	; GO address
-    1519/     15A :                     SADDR:	DS	2	; SET address
-    1520/     15C :                     HEXMOD:	DS	1	; HEX file mode
-    1521/     15D :                     PSPEC:	DS	1	; Processor spec.
-    1522/     15E :                     
-    1523/     15E :                     RECTYP:	DS	1	; Record type
-    1524/     15F :                     
-    1525/     15F :                     	ALIGN	2
-    1526/     160 :                     REG_B:	
-    1527/     160 :                     REGAX:	DS	2
-    1528/     162 :                     REGBX:	DS	2
-    1529/     164 :                     REGCX:	DS	2
-    1530/     166 :                     REGDX:	DS	2
-    1531/     168 :                     REGF:	DS	2
-    1532/     16A :                     REGSP:	DS	2		; Stack Pointer SP
-    1533/     16C :                     REGBP:	DS	2		; Base Pointer BP
-    1534/     16E :                     REGSI:	DS	2		; Source Index SI
-    1535/     170 :                     REGDI:	DS	2		; Destination Index DI
-    1536/     172 :                     REGIP:	DS	2		; Instruction Pointer IP
-    1537/     174 :                     REGCS:	DS	2		; Code Segment CS
-    1538/     176 :                     REGDS:	DS	2		; Data Segment DS
-    1539/     178 :                     REGSS:	DS	2		; Stack Segment SS
-    1540/     17A :                     REGES:	DS	2		; Extra Segment ES
-    1541/     17C :                     REG_E:	
-    1542/     17C :                     
-    1543/     17C :                     ; break point
-    1544/     17C :                     bflg	ds	1
-    1545/     17D :                     bp_code	ds	1
-    1546/     17E :                     brkcs	ds	2
-    1547/     180 :                     brkip	ds	2
-    1548/     182 :                     
-    1549/     182 :                     ; Frag register bit image string buffer
-    1550/     182 :                     F_bit:		ds	F_bitSize+1
-    1551/     193 :                     
-    1552/     193 :                     	END
- AS V1.42 Beta [Bld 227] - Source File unimon_8086.asm - Page 2 - 1/17/2024 0:2:53
+    1509/       0 :                     	;; Work area
+    1510/       0 :                     	;;
+    1511/       0 :                     
+    1512/     100 :                     	ORG	WORK_B
+    1513/     100 :                     
+    1514/     100 :                     INBUF:	DS	BUFLEN	; Line input buffer
+    1515/     150 :                     CURSEG:	DS	2	; Current segment
+    1516/     152 :                     DSADDR:	DS	2	; DUMP start address
+    1517/     154 :                     DEADDR:	DS	2	; DUMP end address
+    1518/     156 :                     DSTATE:	DS	1	; DUMP state
+    1519/     157 :                     	ALIGN	2
+    1520/     158 :                     GADDR:	DS	2	; GO address
+    1521/     15A :                     SADDR:	DS	2	; SET address
+    1522/     15C :                     HEXMOD:	DS	1	; HEX file mode
+    1523/     15D :                     PSPEC:	DS	1	; Processor spec.
+    1524/     15E :                     
+    1525/     15E :                     RECTYP:	DS	1	; Record type
+    1526/     15F :                     
+    1527/     15F :                     	ALIGN	2
+    1528/     160 :                     REG_B:	
+    1529/     160 :                     REGAX:	DS	2
+    1530/     162 :                     REGBX:	DS	2
+    1531/     164 :                     REGCX:	DS	2
+    1532/     166 :                     REGDX:	DS	2
+    1533/     168 :                     REGF:	DS	2
+    1534/     16A :                     REGSP:	DS	2		; Stack Pointer SP
+    1535/     16C :                     REGBP:	DS	2		; Base Pointer BP
+    1536/     16E :                     REGSI:	DS	2		; Source Index SI
+    1537/     170 :                     REGDI:	DS	2		; Destination Index DI
+    1538/     172 :                     REGIP:	DS	2		; Instruction Pointer IP
+    1539/     174 :                     REGCS:	DS	2		; Code Segment CS
+    1540/     176 :                     REGDS:	DS	2		; Data Segment DS
+    1541/     178 :                     REGSS:	DS	2		; Stack Segment SS
+    1542/     17A :                     REGES:	DS	2		; Extra Segment ES
+    1543/     17C :                     REG_E:	
+    1544/     17C :                     
+    1545/     17C :                     ; break point
+    1546/     17C :                     bflg	ds	1
+    1547/     17D :                     bp_code	ds	1
+    1548/     17E :                     brkcs	ds	2
+    1549/     180 :                     brkip	ds	2
+    1550/     182 :                     
+    1551/     182 :                     ; Frag register bit image string buffer
+    1552/     182 :                     F_bit:		ds	F_bitSize+1
+    1553/     193 :                     
+    1554/     193 :                     	END
+ AS V1.42 Beta [Bld 227] - Source File unimon_8086.asm - Page 2 - 1/18/2024 11:43:33
 
 
   Symbol Table (* = unused):
@@ -1607,10 +1608,10 @@
  CHK_BPT :                      7D7 C | *COMPMODE :                       0 - |
  CONIN :                       0AB7 C |  CONOUT :                      0AC5 C |
  CONST :                       0AC0 C | *CONSTPI :        3.141592653589793 - |
- COUT0 :                       0AC6 C |  CPM86 :                          1 - |
+ COUT0 :                       0AC7 C |  CPM86 :                          1 - |
  CPM86_CODE :                    40 - |  CR :                            0D - |
  CRLF :                         656 C |  CSTART :                         0 C |
- CURSEG :                       150 D | *DATE :                 "1/17/2024" - |
+ CURSEG :                       150 D | *DATE :                 "1/18/2024" - |
  DEADDR :                       154 D |  DEL :                           7F - |
  DIVMSG :                       8C7 C |  DP0 :                          169 C |
  DP01 :                         17B C |  DP1 :                          193 C |
@@ -1732,7 +1733,7 @@
  T0 :                           5A1 C |  T1 :                           5A8 C |
 *TARGET :                    "8088" - |  TBIT_OFF :                    0ED5 - |
  TBIT_ON_ :                     100 - |  TE :                           5AE C |
-*TIME :                    "0:2:53" - |  TO_GO :                        5B1 C |
+*TIME :                  "11:43:33" - |  TO_GO :                        5B1 C |
  TRACE :                        587 C | *TRUE :                           1 - |
  UPPER :                        6B9 C |  UPR :                          6C3 C |
  USARTC :                         2 - |  USARTD :                         0 - |
@@ -1743,7 +1744,7 @@
     280 symbols
      26 unused symbols
 
- AS V1.42 Beta [Bld 227] - Source File unimon_8086.asm - Page 3 - 1/17/2024 0:2:53
+ AS V1.42 Beta [Bld 227] - Source File unimon_8086.asm - Page 3 - 1/18/2024 11:43:33
 
 
   Code Pages:
@@ -1753,9 +1754,9 @@ STANDARD (0 changed characters)
 
 1 code page
 
-0.30 seconds assembly time
+0.08 seconds assembly time
 
-   1554 lines source file
+   1556 lines source file
       3 passes
       0 errors
       0 warnings

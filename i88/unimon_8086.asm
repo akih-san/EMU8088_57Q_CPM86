@@ -1476,13 +1476,15 @@ CONST:
 	RET
 
 CONOUT:
-	PUSH	AX
+;	PUSH	AX
+	mov	ah, al
 COUT0:	
 	IN	AL,USARTC
 	and	al, 02h		; check U3TXIF
 	JZ	COUT0
 
-	POP	AX
+;	POP	AX
+	mov	al, ah
 	OUT	USARTD,AL
 	RET
 

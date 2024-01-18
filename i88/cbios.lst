@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 1 - 1/17/2024 0:28:57
+ AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 1 - 1/18/2024 11:43:35
 Customized Basic I/O System
 
 
@@ -605,7 +605,7 @@ Customized Basic I/O System
      578/     380 :                     bdos_offset	dw	?
      579/     382 :                     bdos_segment	dw	?
      580/     384 :                     	END
- AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 2 - 1/17/2024 0:28:57
+ AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 2 - 1/18/2024 11:43:35
 Customized Basic I/O System
 
 
@@ -633,7 +633,7 @@ Customized Basic I/O System
 *CSSHD2 :                         0 - |  CSV0 :                        2814 D |
  CSV1 :                        2843 D |  CSV2 :                        2872 D |
  CSV3 :                        28A1 D |  DATA_OFFSET :                 2680 - |
-*DATE :                 "1/17/2024" - | *DATSIZ :                       33A - |
+*DATE :                 "1/18/2024" - | *DATSIZ :                       33A - |
  DIRBUF :                      2775 D |  DISK_OP_READ :                   0 - |
  DISK_OP_WRITE :                  1 - | *DISK_REG_DMAHH :                27 - |
  DISK_REG_DMAHL :                26 - | *DISK_REG_DMALH :                25 - |
@@ -674,7 +674,7 @@ Customized Basic I/O System
  SETDMAB :                     264F C |  SETIOBF :                     25F0 C |
  SETSEC :                      2634 C |  SETTRK :                      262F C |
  SET_HOME :                    2631 C |  SIGNON :                      2681 D |
- STKBASE :                     2AF0 - | *TIME :                   "0:28:57" - |
+ STKBASE :                     2AF0 - | *TIME :                  "11:43:34" - |
  TPA_LEN :                    0FC41 - |  TPA_SEG :                      2EF - |
 *TRUE :                           1 - | *UART_CREG :                      2 - |
 *UART_DREG :                      0 - |  UNIMON :                         1 - |
@@ -688,7 +688,7 @@ Customized Basic I/O System
     142 symbols
      40 unused symbols
 
- AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 3 - 1/17/2024 0:28:57
+ AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 3 - 1/18/2024 11:43:35
 Customized Basic I/O System
 
 
