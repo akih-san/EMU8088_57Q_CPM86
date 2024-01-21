@@ -18,12 +18,11 @@ EMU8088/V20_57Q Rev1.5 SBCボード<br>
 
 
 Rev1.4とRev1.5(左側がRev1.4）
-
 ![EMU8088 2](photo/P1020472.JPG)
 
 
-
 CP/M-86起動画面<br>
+![EMU8088 1](photo/p224950.png)
 
 
 # 動作確認したCPU
