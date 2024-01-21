@@ -8,7 +8,6 @@
 
 TARGET:	EQU	"8088"
 
-USE_IDENT = 1			; CPU Identification
 CPM86 = 1
 
 ;;;
@@ -82,7 +81,6 @@ CSTART:
 	MOV	[DSADDR],AX	; set dump start address
 	MOV	[GADDR],AX	; set Go address to 0000h
 	MOV	[SADDR],AX	; Set memory address
-	MOV	[PSPEC],AL	; init prosessor spec
 
 	; init break point
 	mov	[bflg], al	; clear break flag
@@ -150,73 +148,33 @@ INI1:
 	inc	di
 	mov	es:[di],bx
 	
-	;; Opening message
-	MOV	BX,OPNMSG
-	CALL	MSGOUT
+; Check CPU TYPE
 
-	IF USE_IDENT
-
-	PUSHF			; Begin: (from Application Note 485)
-	POP	AX
-	MOV	CX,AX
-	AND	AX,0FFFH
-	PUSH	AX
-	POPF
-	PUSHF
-	POP	AX
-	AND	AX,0F000H
-	CMP	AX,0F000H
-	JNE	ID_286
-
-	PUSH	SP
-	POP	DX
-	CMP	DX,SP
-	JE	ID_UNK		; End:
-
+	mov	bx, IMV20
 	MOV	AX,0100H
 	DB	0D5H,00H	; AAD 00H
 	OR	AL,AL
-	JNE	ID_V30
-	;; 8086/80186
-	MOV	AL,11H
-	MOV	BX,IM86
-	JMP	IDE
-ID_V30:
-	;; V30
-	MOV	AL,14H
-	MOV	BX,IMV30
-	JMP	IDE
-ID_286:
-	OR	CX,0F000H	; Begin: (from Application Note 485)
-	PUSH	CX
-	POPF
-	PUSHF
-	POP	AX
-	AND	AX,0F000H
-	JNE	ID_386		; End
-	;; 80286
-	MOV	AL,31H
-	MOV	BX,IM286
-	JMP	IDE
-ID_386:
-	;; 80386
-	MOV	AL,71H
-	MOV	BX,IM386
-	JMP	IDE
-	;; Unknown
-ID_UNK:
-	XOR	AL,AL
-	MOV	BX,IMUNK
-IDE:
-	MOV	[PSPEC],AL
+	JNE	ID_V20		; V20
+	mov	bx, IM88	; 8088
+ID_V20:
+	MOV	[PSPEC],BX
+
+	mov	bx, cpu_msg
 	CALL	MSGOUT
-	
-	ENDIF
+
+	mov	bx, [PSPEC]	; get CPU MSG address
+	CALL	MSGOUT
 
 	if CPM86
 	mov	bx, invoke_msg
 	CALL	MSGOUT
 	jmpf	CPM86_CODE:BIOS_ENTRY
+
+	else
+
+	;; Universal Moniter Opening message
+	MOV	BX,OPNMSG
+	CALL	MSGOUT
 	endif
 
 WSTART:
@@ -1257,7 +1215,12 @@ invoke_msg:
 	endif
 
 OPNMSG:
-	DB	CR,LF,"Universal Monitor ",00H
+	DB	CR,LF,"Universal Monitor 8088/V20 Edition",CR,LF, 00H
+
+cpu_msg:
+	db	"CPU TYPE : ", 00h
+IM88:	DB	"8088",CR,LF,00H
+IMV20:	DB	"V20",CR,LF,00H
 
 PROMPT:
 	DB	"] ",00H
@@ -1285,17 +1248,6 @@ INIVEC:
 	DW	INTBRK, MON_CSEG	; 03H Breakpoint
 	DW	INTOVF, MON_CSEG	; 04H Overflow
 INIVECE:
-
-	IF USE_IDENT
-
-IM86:	DB	"8086/8088",CR,LF,00H
-IM186:	DB	"80186/80188",CR,LF,00H
-IMV30:	DB	"V30/V20",CR,LF,00H
-IM286:	DB	"80286",CR,LF,00H
-IM386:	DB	"80386",CR,LF,00H
-IMUNK:	DB	"Unknown",CR,LF,00H
-
-	ENDIF
 	
 DIVMSG:	DB	CR,LF,"Divide error",CR,LF,00H
 STPMSG:	DB	CR,LF,"Step",CR,LF,00H
@@ -1476,16 +1428,15 @@ CONST:
 	RET
 
 CONOUT:
-;	PUSH	AX
 	mov	ah, al
 COUT0:	
 	IN	AL,USARTC
 	and	al, 02h		; check U3TXIF
 	JZ	COUT0
 
-;	POP	AX
 	mov	al, ah
 	OUT	USARTD,AL
+
 	RET
 
 reset_vec	equ 0ffff0h-MON_CSEG*16
@@ -1520,7 +1471,7 @@ DSTATE:	DS	1	; DUMP state
 GADDR:	DS	2	; GO address
 SADDR:	DS	2	; SET address
 HEXMOD:	DS	1	; HEX file mode
-PSPEC:	DS	1	; Processor spec.
+PSPEC:	DS	2	; Processor spec.
 
 RECTYP:	DS	1	; Record type
 

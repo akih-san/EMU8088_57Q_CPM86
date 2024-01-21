@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 1 - 1/18/2024 11:43:35
+ AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 1 - 1/21/2024 17:9:57
 Customized Basic I/O System
 
 
@@ -103,7 +103,7 @@ Customized Basic I/O System
       88/    2587 : 8E D8               	mov	ds,ax		;DS:,
       89/    2589 : 8E C0               	mov	es,ax		;and ES:
       90/    258B :                     	;use local stack during initialization
-      91/    258B : BC F0 2A            	mov	sp,stkbase
+      91/    258B : BC EC 2A            	mov	sp,stkbase
       92/    258E : FC                  	cld			;set forward direction
       93/    258F :                     
       94/    258F :                     ;---------------------------------------------
@@ -152,7 +152,7 @@ Customized Basic I/O System
      137/    25B5 : FA                  	cli			;block interrupts
      138/    25B6 : 8C C8               	mov	ax,cs
      139/    25B8 : 8E D8               	mov	ds,ax		;get our data segment
-     140/    25BA : BB C1 26            	mov	bx,int_trp
+     140/    25BA : BB BD 26            	mov	bx,int_trp
      141/    25BD : E8 35 00            	call	pmsg
      142/    25C0 : F4                  	hlt			;hardstop
      143/    25C1 :                     ;|                                           |
@@ -279,11 +279,11 @@ Customized Basic I/O System
      264/    2605 : 3C 04               	cmp	al, 4
      265/    2607 : 72 12               	jc	SELFD
      266/    2609 :                     
-     267/    2609 : BB 46 27            	mov	bx,HDB1		;dph harddisk 1
+     267/    2609 : BB 42 27            	mov	bx,HDB1		;dph harddisk 1
      268/    260C : 3C 08               	cmp	al, 8
      269/    260E : 74 18               	jz	SELHD
      270/    2610 :                     
-     271/    2610 : BB 56 27            	mov	bx,HDB2		;dph harddisk 2
+     271/    2610 : BB 52 27            	mov	bx,HDB2		;dph harddisk 2
      272/    2613 : 3C 09               	cmp	al, 9
      273/    2615 : 74 11               	jz	SELHD
      274/    2617 :                     
@@ -294,7 +294,7 @@ Customized Basic I/O System
      279/    261D : 8B D9               	mov	bx,cx		;bx = n
      280/    261F : B1 04               	mov	cl,4		;ready for *16
      281/    2621 : D3 E3               	shl	bx,cl		;n = n * 16
-     282/    2623 : B9 DD 26            	mov	cx,dpbase
+     282/    2623 : B9 D9 26            	mov	cx,dpbase
      283/    2626 : 03 D9               	add	bx,cx		;dpbase + n * 16
      284/    2628 :                     SELHD:
      285/    2628 : E6 10               	out	DISK_REG_DRIVE, al	; set drive to PIC
@@ -341,7 +341,7 @@ Customized Basic I/O System
      326/    2653 : C3                  	ret
      327/    2654 :                     ;
      328/    2654 :                     GETSEGT:  ;return address of physical memory table
-     329/    2654 : BB D8 26            	mov	bx,segtable
+     329/    2654 : BB D4 26            	mov	bx,segtable
      330/    2657 : C3                  	ret
      331/    2658 :                     
      332/    2658 :                     ;*********************************************
@@ -410,191 +410,190 @@ Customized Basic I/O System
              2691 : 20 47 65 6E 65 72 
              2697 : 61 74 65 64 21 0D 
              269D : 0A                
-     394/    269E : 45 4D 55 38 30 38   	db	"EMU8088/V20_RAM edition. 2023.12"
-             26A4 : 38 2F 56 32 30 5F 
-             26AA : 52 41 4D 20 65 64 
-             26B0 : 69 74 69 6F 6E 2E 
-             26B6 : 20 32 30 32 33 2E 
-             26BC : 31 32             
-     395/    26BE : 0D 0A 00            	db	cr,lf,0
-     396/    26C1 :                     ;|                                           |
-     397/    26C1 :                     ;---------------------------------------------
-     398/    26C1 :                     
-     399/    26C1 : 0D 0A               int_trp	db	cr,lf
-     400/    26C3 : 49 6E 74 65 72 72   	db	'Interrupt Trap Halt'
-             26C9 : 75 70 74 20 54 72 
-             26CF : 61 70 20 48 61 6C 
-             26D5 : 74                
-     401/    26D6 : 0D 0A               	db	cr,lf
-     402/    26D8 :                     
-     403/    26D8 :                     ;	System Memory Segment Table
-     404/    26D8 :                     
-     405/    26D8 : 01                  segtable	db	1	;
-     406/    26D9 : EF 02               	dw tpa_seg	;1st seg starts after BIOS
-     407/    26DB : 41 FC               	dw tpa_len	;and extends
-     408/    26DD :                     
-     409/    26DD :                     ;	include singles.lib ;read in disk definitions
-     410/    26DD :                     
-     411/    26DD :                     ;---------- 4 DISKS --------------------
-     412/    26DD : =26DDH               dpbase	equ	$		;Base of Disk Parameter Blocks
-     413/    26DD : 2C 27 00 00         dpe0	dw	xlt0,0000h	;Translate Table
-     414/    26E1 : 00 00 00 00         	dw	0000h,0000h	;Scratch Area
-     415/    26E5 : 75 27 1D 27         	dw	dirbuf,dpb0	;Dir Buff, Parm Block
-     416/    26E9 : 14 28 F5 27         	dw	csv0,alv0	;Check, Alloc Vectors
-     417/    26ED :                     
-     418/    26ED : 2C 27 00 00         dpe1	dw	xlt1,0000h	;Translate Table
-     419/    26F1 : 00 00 00 00         	dw	0000h,0000h	;Scratch Area
-     420/    26F5 : 75 27 1D 27         	dw	dirbuf,dpb1	;Dir Buff, Parm Block
-     421/    26F9 : 43 28 24 28         	dw	csv1,alv1	;Check, Alloc Vectors
-     422/    26FD :                     
-     423/    26FD : 2C 27 00 00         dpe2	dw	xlt2,0000h	;Translate Table
-     424/    2701 : 00 00 00 00         	dw	0000h,0000h	;Scratch Area
-     425/    2705 : 75 27 1D 27         	dw	dirbuf,dpb2	;Dir Buff, Parm Block
-     426/    2709 : 72 28 53 28         	dw	csv2,alv2	;Check, Alloc Vectors
-     427/    270D :                     
-     428/    270D : 2C 27 00 00         dpe3	dw	xlt3,0000h	;Translate Table
-     429/    2711 : 00 00 00 00         	dw	0000h,0000h	;Scratch Area
-     430/    2715 : 75 27 1D 27         	dw	dirbuf,dpb3	;Dir Buff, Parm Block
-     431/    2719 : A1 28 82 28         	dw	csv3,alv3	;Check, Alloc Vectors
-     432/    271D :                     
-     433/    271D :                     ;	        DISKDEF 0,1,26,6,1024,243,64,64,2
-     434/    271D :                     ;
-     435/    271D :                     ;	 1944:	128 Byte Record Capacity
-     436/    271D :                     ;	  243:	Kilobyte Drive  Capacity
-     437/    271D :                     ;	   64:	32 Byte Directory Entries
-     438/    271D :                     ;	   64:	Checked Directory Entries
-     439/    271D :                     ;	  128:	Records / Extent
-     440/    271D :                     ;	    8:	Records / Block
-     441/    271D :                     ;	   26:	Sectors / Track
-     442/    271D :                     ;	    2:	Reserved  Tracks
-     443/    271D :                     ;	    6:	Sector Skew Factor
-     444/    271D :                     ;
-     445/    271D : =271DH               dpb0	equ	$		;Disk Parameter Block
-     446/    271D : 1A 00               	dw	26		;Sectors Per Track
-     447/    271F : 03                  	db	3		;Block Shift
-     448/    2720 : 07                  	db	7		;Block Mask
-     449/    2721 : 00                  	db	0		;Extnt Mask
-     450/    2722 : F2 00               	dw	242		;Disk Size - 1
-     451/    2724 : 3F 00               	dw	63		;Directory Max
-     452/    2726 : C0                  	db	192		;Alloc0
-     453/    2727 : 00                  	db	0		;Alloc1
-     454/    2728 : 10 00               	dw	16		;Check Size
-     455/    272A : 02 00               	dw	2		;Offset
-     456/    272C :                     
-     457/    272C : =272CH               xlt0	equ	$		;Translate Table
-     458/    272C : 01 07 0D 13         	db	1,7,13,19
-     459/    2730 : 19 05 0B 11         	db	25,5,11,17
-     460/    2734 : 17 03 09 0F         	db	23,3,9,15
-     461/    2738 : 15 02 08 0E         	db	21,2,8,14
-     462/    273C : 14 1A 06 0C         	db	20,26,6,12
-     463/    2740 : 12 18 04 0A         	db	18,24,4,10
-     464/    2744 : 10 16               	db	16,22
-     465/    2746 : =1FH                 als0	equ	31		;Allocation Vector Size
-     466/    2746 : =10H                 css0	equ	16		;Check Vector Size
-     467/    2746 :                     
-     468/    2746 :                     ;	        DISKDEF 1,0
-     469/    2746 :                     ;
-     470/    2746 :                     ;	Disk 1 - 3  are the same as Disk 0
-     471/    2746 :                     ;
-     472/    2746 : =271DH               dpb1	equ	dpb0		;Equivalent Parameters
-     473/    2746 : =271DH               dpb2	equ	dpb0		;Equivalent Parameters
-     474/    2746 : =271DH               dpb3	equ	dpb0		;Equivalent Parameters
-     475/    2746 : =1FH                 als1	equ	als0		;Same Allocation Vector Size
-     476/    2746 : =1FH                 als2	equ	als0		;Same Allocation Vector Size
-     477/    2746 : =1FH                 als3	equ	als0		;Same Allocation Vector Size
-     478/    2746 : =10H                 css1	equ	css0		;Same Checksum Vector Size
-     479/    2746 : =10H                 css2	equ	css0		;Same Checksum Vector Size
-     480/    2746 : =10H                 css3	equ	css0		;Same Checksum Vector Size
-     481/    2746 : =272CH               xlt1	equ	xlt0		;Same Translate Table
-     482/    2746 : =272CH               xlt2	equ	xlt0		;Same Translate Table
-     483/    2746 : =272CH               xlt3	equ	xlt0		;Same Translate Table
-     484/    2746 :                     ;	        ENDEF
-     485/    2746 :                     ;
-     486/    2746 :                     ;	fixed data tables for 4MB harddisks
-     487/    2746 :                     ;
-     488/    2746 :                     ;	disk parameter header
-     489/    2746 : 00 00 00 00         HDB1:	DW	0000H,0000H
-     490/    274A : 00 00 00 00         	DW	0000H,0000H
-     491/    274E : 75 27 66 27         	DW	dirbuf,HDBLK
-     492/    2752 : AF 2A B1 28         	DW	CHKHD1,ALLHD1
-     493/    2756 : 00 00 00 00         HDB2:	DW	0000H,0000H
-     494/    275A : 00 00 00 00         	DW	0000H,0000H
-     495/    275E : 75 27 66 27         	DW	dirbuf,HDBLK
-     496/    2762 : AF 2A B0 29         	DW	CHKHD2,ALLHD2
-     497/    2766 :                     ;
-     498/    2766 :                     ;       disk parameter block for harddisk
-     499/    2766 :                     ;
-     500/    2766 :                     ;HDBLK:	DW	32		;SEC PER TRACK
-     501/    2766 :                     ;	DB	4		;BLOCK SHIFT
-     502/    2766 :                     ;	DB	15		;BLOCK MASK
-     503/    2766 :                     ;	DB	0		;EXTNT MASK
-     504/    2766 :                     ;	DW	2047		;DISK SIZE-1
-     505/    2766 :                     ;	DW	255		;DIRECTORY MAX
-     506/    2766 :                     ;	DB	240		;ALLOC0
-     507/    2766 :                     ;	DB	0		;ALLOC1
-     508/    2766 :                     ;	DW	0		;CHECK SIZE
-     509/    2766 :                     ;	DW	0		;OFFSET
-     510/    2766 :                     
-     511/    2766 : 80 00               HDBLK:  DW    128		;sectors per track
-     512/    2768 : 04                  	DB    4			;block shift factor
-     513/    2769 : 0F                  	DB    15		;block mask
-     514/    276A : 00                  	DB    0			;extent mask
-     515/    276B : F7 07               	DW    2039		;disk size-1
-     516/    276D : FF 03               	DW    1023		;directory max
-     517/    276F : FF                  	DB    255		;alloc 0
-     518/    2770 : FF                  	DB    255		;alloc 1
-     519/    2771 : 00 00               	DW    0			;check size
-     520/    2773 : 00 00               	DW    0			;track offset
-     521/    2775 :                     
-     522/    2775 : =0FFH                alshd1	equ	255		;Allocation Vector Size
-     523/    2775 :                     ;alshd1	equ	32		;Allocation Vector Size
-     524/    2775 : =0H                  csshd1	equ	0		;Check Vector Size
-     525/    2775 : =0FFH                alshd2	equ	alshd1		;Allocation Vector Size
-     526/    2775 : =0H                  csshd2	equ	csshd1		;Check Vector Size
-     527/    2775 :                     
-     528/    2775 :                     ;
-     529/    2775 :                     ;	Uninitialized Scratch Memory Follows:
-     530/    2775 :                     ;
-     531/    2775 : =2775H               begdat	equ	$		;Start of Scratch Area
-     532/    2775 :                     dirbuf	ds	128		;Directory Buffer
-     533/    27F5 :                     alv0	ds	als0		;Alloc Vector
-     534/    2814 :                     csv0	ds	css0		;Check Vector
-     535/    2824 :                     alv1	ds	als1		;Alloc Vector
-     536/    2843 :                     csv1	ds	css1		;Check Vector
-     537/    2853 :                     alv2	ds	als2		;Alloc Vector
-     538/    2872 :                     csv2	ds	css2		;Check Vector
-     539/    2882 :                     alv3	ds	als3		;Alloc Vector
-     540/    28A1 :                     csv3	ds	css3		;Check Vector
-     541/    28B1 :                     ALLHD1:	DS	alshd1		;allocation vector harddisk 1
-     542/    29B0 :                     ALLHD2:	DS	alshd2		;allocation vector harddisk 2
-     543/    2AAF : =2AAFH               CHKHD1:	equ	$		;check vector harddisk 1 (0)
-     544/    2AAF : =2AAFH               CHKHD2:	equ	$		;check vector harddisk 2 (0)
-     545/    2AAF : =2AAFH               enddat	equ	$		;End of Scratch Area
-     546/    2AAF :                     
-     547/    2AAF : =33AH                datsiz	equ	enddat - begdat	;Size of Scratch Area
-     548/    2AAF :                     
-     549/    2AAF : 00                  	db	0		;Marks End of Module
-     550/    2AB0 :                     
-     551/    2AB0 :                     loc_stk	dw  32 dup(?)		;local stack for initialization
-     552/    2AF0 :                     
-     553/    2AF0 : =2AF0H               stkbase	equ	$
-     554/    2AF0 : =2AF0H               lastoff	equ	$
-     555/    2AF0 : 00                  	db 0	;fill last address for GENCMD
-     556/    2AF1 :                     
-     557/    2AF1 : =2EFH                tpa_seg	equ (lastoff+0400h+15) / 16
-     558/    2AF1 :                     
-     559/    2AF1 : =>TRUE               	if UNIMON = 1
-     560/    2AF1 : =0FC41H              tpa_len	equ UNI_OFF - tpa_seg
-     561/    2AF1 : =>FALSE              	else
-     562/    2AF1 :                     tpa_len	equ 10000h - tpa_seg
-     563/    2AF1 : [559]                	endif
-     564/    2AF1 :                     
-     565/    2AF1 :                     ;*********************************************
-     566/    2AF1 :                     ;*                                           *
-     567/    2AF1 :                     ;*          Dummy Data Section               *
-     568/    2AF1 :                     ;*                                           *
-     569/    2AF1 :                     ;*********************************************
-     570/    2AF1 :                     	SEGMENT	DATA
+     394/    269E : 45 4D 55 38 30 38   	db	"EMU8088/V20 edition. 2024.02"
+             26A4 : 38 2F 56 32 30 20 
+             26AA : 65 64 69 74 69 6F 
+             26B0 : 6E 2E 20 32 30 32 
+             26B6 : 34 2E 30 32       
+     395/    26BA : 0D 0A 00            	db	cr,lf,0
+     396/    26BD :                     ;|                                           |
+     397/    26BD :                     ;---------------------------------------------
+     398/    26BD :                     
+     399/    26BD : 0D 0A               int_trp	db	cr,lf
+     400/    26BF : 49 6E 74 65 72 72   	db	'Interrupt Trap Halt'
+             26C5 : 75 70 74 20 54 72 
+             26CB : 61 70 20 48 61 6C 
+             26D1 : 74                
+     401/    26D2 : 0D 0A               	db	cr,lf
+     402/    26D4 :                     
+     403/    26D4 :                     ;	System Memory Segment Table
+     404/    26D4 :                     
+     405/    26D4 : 01                  segtable	db	1	;
+     406/    26D5 : EF 02               	dw tpa_seg	;1st seg starts after BIOS
+     407/    26D7 : 41 FC               	dw tpa_len	;and extends
+     408/    26D9 :                     
+     409/    26D9 :                     ;	include singles.lib ;read in disk definitions
+     410/    26D9 :                     
+     411/    26D9 :                     ;---------- 4 DISKS --------------------
+     412/    26D9 : =26D9H               dpbase	equ	$		;Base of Disk Parameter Blocks
+     413/    26D9 : 28 27 00 00         dpe0	dw	xlt0,0000h	;Translate Table
+     414/    26DD : 00 00 00 00         	dw	0000h,0000h	;Scratch Area
+     415/    26E1 : 71 27 19 27         	dw	dirbuf,dpb0	;Dir Buff, Parm Block
+     416/    26E5 : 10 28 F1 27         	dw	csv0,alv0	;Check, Alloc Vectors
+     417/    26E9 :                     
+     418/    26E9 : 28 27 00 00         dpe1	dw	xlt1,0000h	;Translate Table
+     419/    26ED : 00 00 00 00         	dw	0000h,0000h	;Scratch Area
+     420/    26F1 : 71 27 19 27         	dw	dirbuf,dpb1	;Dir Buff, Parm Block
+     421/    26F5 : 3F 28 20 28         	dw	csv1,alv1	;Check, Alloc Vectors
+     422/    26F9 :                     
+     423/    26F9 : 28 27 00 00         dpe2	dw	xlt2,0000h	;Translate Table
+     424/    26FD : 00 00 00 00         	dw	0000h,0000h	;Scratch Area
+     425/    2701 : 71 27 19 27         	dw	dirbuf,dpb2	;Dir Buff, Parm Block
+     426/    2705 : 6E 28 4F 28         	dw	csv2,alv2	;Check, Alloc Vectors
+     427/    2709 :                     
+     428/    2709 : 28 27 00 00         dpe3	dw	xlt3,0000h	;Translate Table
+     429/    270D : 00 00 00 00         	dw	0000h,0000h	;Scratch Area
+     430/    2711 : 71 27 19 27         	dw	dirbuf,dpb3	;Dir Buff, Parm Block
+     431/    2715 : 9D 28 7E 28         	dw	csv3,alv3	;Check, Alloc Vectors
+     432/    2719 :                     
+     433/    2719 :                     ;	        DISKDEF 0,1,26,6,1024,243,64,64,2
+     434/    2719 :                     ;
+     435/    2719 :                     ;	 1944:	128 Byte Record Capacity
+     436/    2719 :                     ;	  243:	Kilobyte Drive  Capacity
+     437/    2719 :                     ;	   64:	32 Byte Directory Entries
+     438/    2719 :                     ;	   64:	Checked Directory Entries
+     439/    2719 :                     ;	  128:	Records / Extent
+     440/    2719 :                     ;	    8:	Records / Block
+     441/    2719 :                     ;	   26:	Sectors / Track
+     442/    2719 :                     ;	    2:	Reserved  Tracks
+     443/    2719 :                     ;	    6:	Sector Skew Factor
+     444/    2719 :                     ;
+     445/    2719 : =2719H               dpb0	equ	$		;Disk Parameter Block
+     446/    2719 : 1A 00               	dw	26		;Sectors Per Track
+     447/    271B : 03                  	db	3		;Block Shift
+     448/    271C : 07                  	db	7		;Block Mask
+     449/    271D : 00                  	db	0		;Extnt Mask
+     450/    271E : F2 00               	dw	242		;Disk Size - 1
+     451/    2720 : 3F 00               	dw	63		;Directory Max
+     452/    2722 : C0                  	db	192		;Alloc0
+     453/    2723 : 00                  	db	0		;Alloc1
+     454/    2724 : 10 00               	dw	16		;Check Size
+     455/    2726 : 02 00               	dw	2		;Offset
+     456/    2728 :                     
+     457/    2728 : =2728H               xlt0	equ	$		;Translate Table
+     458/    2728 : 01 07 0D 13         	db	1,7,13,19
+     459/    272C : 19 05 0B 11         	db	25,5,11,17
+     460/    2730 : 17 03 09 0F         	db	23,3,9,15
+     461/    2734 : 15 02 08 0E         	db	21,2,8,14
+     462/    2738 : 14 1A 06 0C         	db	20,26,6,12
+     463/    273C : 12 18 04 0A         	db	18,24,4,10
+     464/    2740 : 10 16               	db	16,22
+     465/    2742 : =1FH                 als0	equ	31		;Allocation Vector Size
+     466/    2742 : =10H                 css0	equ	16		;Check Vector Size
+     467/    2742 :                     
+     468/    2742 :                     ;	        DISKDEF 1,0
+     469/    2742 :                     ;
+     470/    2742 :                     ;	Disk 1 - 3  are the same as Disk 0
+     471/    2742 :                     ;
+     472/    2742 : =2719H               dpb1	equ	dpb0		;Equivalent Parameters
+     473/    2742 : =2719H               dpb2	equ	dpb0		;Equivalent Parameters
+     474/    2742 : =2719H               dpb3	equ	dpb0		;Equivalent Parameters
+     475/    2742 : =1FH                 als1	equ	als0		;Same Allocation Vector Size
+     476/    2742 : =1FH                 als2	equ	als0		;Same Allocation Vector Size
+     477/    2742 : =1FH                 als3	equ	als0		;Same Allocation Vector Size
+     478/    2742 : =10H                 css1	equ	css0		;Same Checksum Vector Size
+     479/    2742 : =10H                 css2	equ	css0		;Same Checksum Vector Size
+     480/    2742 : =10H                 css3	equ	css0		;Same Checksum Vector Size
+     481/    2742 : =2728H               xlt1	equ	xlt0		;Same Translate Table
+     482/    2742 : =2728H               xlt2	equ	xlt0		;Same Translate Table
+     483/    2742 : =2728H               xlt3	equ	xlt0		;Same Translate Table
+     484/    2742 :                     ;	        ENDEF
+     485/    2742 :                     ;
+     486/    2742 :                     ;	fixed data tables for 4MB harddisks
+     487/    2742 :                     ;
+     488/    2742 :                     ;	disk parameter header
+     489/    2742 : 00 00 00 00         HDB1:	DW	0000H,0000H
+     490/    2746 : 00 00 00 00         	DW	0000H,0000H
+     491/    274A : 71 27 62 27         	DW	dirbuf,HDBLK
+     492/    274E : AB 2A AD 28         	DW	CHKHD1,ALLHD1
+     493/    2752 : 00 00 00 00         HDB2:	DW	0000H,0000H
+     494/    2756 : 00 00 00 00         	DW	0000H,0000H
+     495/    275A : 71 27 62 27         	DW	dirbuf,HDBLK
+     496/    275E : AB 2A AC 29         	DW	CHKHD2,ALLHD2
+     497/    2762 :                     ;
+     498/    2762 :                     ;       disk parameter block for harddisk
+     499/    2762 :                     ;
+     500/    2762 :                     ;HDBLK:	DW	32		;SEC PER TRACK
+     501/    2762 :                     ;	DB	4		;BLOCK SHIFT
+     502/    2762 :                     ;	DB	15		;BLOCK MASK
+     503/    2762 :                     ;	DB	0		;EXTNT MASK
+     504/    2762 :                     ;	DW	2047		;DISK SIZE-1
+     505/    2762 :                     ;	DW	255		;DIRECTORY MAX
+     506/    2762 :                     ;	DB	240		;ALLOC0
+     507/    2762 :                     ;	DB	0		;ALLOC1
+     508/    2762 :                     ;	DW	0		;CHECK SIZE
+     509/    2762 :                     ;	DW	0		;OFFSET
+     510/    2762 :                     
+     511/    2762 : 80 00               HDBLK:  DW    128		;sectors per track
+     512/    2764 : 04                  	DB    4			;block shift factor
+     513/    2765 : 0F                  	DB    15		;block mask
+     514/    2766 : 00                  	DB    0			;extent mask
+     515/    2767 : F7 07               	DW    2039		;disk size-1
+     516/    2769 : FF 03               	DW    1023		;directory max
+     517/    276B : FF                  	DB    255		;alloc 0
+     518/    276C : FF                  	DB    255		;alloc 1
+     519/    276D : 00 00               	DW    0			;check size
+     520/    276F : 00 00               	DW    0			;track offset
+     521/    2771 :                     
+     522/    2771 : =0FFH                alshd1	equ	255		;Allocation Vector Size
+     523/    2771 :                     ;alshd1	equ	32		;Allocation Vector Size
+     524/    2771 : =0H                  csshd1	equ	0		;Check Vector Size
+     525/    2771 : =0FFH                alshd2	equ	alshd1		;Allocation Vector Size
+     526/    2771 : =0H                  csshd2	equ	csshd1		;Check Vector Size
+     527/    2771 :                     
+     528/    2771 :                     ;
+     529/    2771 :                     ;	Uninitialized Scratch Memory Follows:
+     530/    2771 :                     ;
+     531/    2771 : =2771H               begdat	equ	$		;Start of Scratch Area
+     532/    2771 :                     dirbuf	ds	128		;Directory Buffer
+     533/    27F1 :                     alv0	ds	als0		;Alloc Vector
+     534/    2810 :                     csv0	ds	css0		;Check Vector
+     535/    2820 :                     alv1	ds	als1		;Alloc Vector
+     536/    283F :                     csv1	ds	css1		;Check Vector
+     537/    284F :                     alv2	ds	als2		;Alloc Vector
+     538/    286E :                     csv2	ds	css2		;Check Vector
+     539/    287E :                     alv3	ds	als3		;Alloc Vector
+     540/    289D :                     csv3	ds	css3		;Check Vector
+     541/    28AD :                     ALLHD1:	DS	alshd1		;allocation vector harddisk 1
+     542/    29AC :                     ALLHD2:	DS	alshd2		;allocation vector harddisk 2
+     543/    2AAB : =2AABH               CHKHD1:	equ	$		;check vector harddisk 1 (0)
+     544/    2AAB : =2AABH               CHKHD2:	equ	$		;check vector harddisk 2 (0)
+     545/    2AAB : =2AABH               enddat	equ	$		;End of Scratch Area
+     546/    2AAB :                     
+     547/    2AAB : =33AH                datsiz	equ	enddat - begdat	;Size of Scratch Area
+     548/    2AAB :                     
+     549/    2AAB : 00                  	db	0		;Marks End of Module
+     550/    2AAC :                     
+     551/    2AAC :                     loc_stk	dw  32 dup(?)		;local stack for initialization
+     552/    2AEC :                     
+     553/    2AEC : =2AECH               stkbase	equ	$
+     554/    2AEC : =2AECH               lastoff	equ	$
+     555/    2AEC : 00                  	db 0	;fill last address for GENCMD
+     556/    2AED :                     
+     557/    2AED : =2EFH                tpa_seg	equ (lastoff+0400h+15) / 16
+     558/    2AED :                     
+     559/    2AED : =>TRUE               	if UNIMON = 1
+     560/    2AED : =0FC41H              tpa_len	equ UNI_OFF - tpa_seg
+     561/    2AED : =>FALSE              	else
+     562/    2AED :                     tpa_len	equ 10000h - tpa_seg
+     563/    2AED : [559]                	endif
+     564/    2AED :                     
+     565/    2AED :                     ;*********************************************
+     566/    2AED :                     ;*                                           *
+     567/    2AED :                     ;*          Dummy Data Section               *
+     568/    2AED :                     ;*                                           *
+     569/    2AED :                     ;*********************************************
+     570/    2AED :                     	SEGMENT	DATA
      571/       0 :                     	org 	0	;(interrupt vectors)
      572/       0 :                     
      573/       0 :                     int0_offset	dw	?
@@ -605,36 +604,36 @@ Customized Basic I/O System
      578/     380 :                     bdos_offset	dw	?
      579/     382 :                     bdos_segment	dw	?
      580/     384 :                     	END
- AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 2 - 1/18/2024 11:43:35
+ AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 2 - 1/21/2024 17:9:58
 Customized Basic I/O System
 
 
   Symbol Table (* = unused):
   --------------------------
 
- ALLHD1 :                      28B1 D |  ALLHD2 :                      29B0 D |
+ ALLHD1 :                      28AD D |  ALLHD2 :                      29AC D |
  ALS0 :                          1F - |  ALS1 :                          1F - |
  ALS2 :                          1F - |  ALS3 :                          1F - |
  ALSHD1 :                       0FF - |  ALSHD2 :                       0FF - |
- ALV0 :                        27F5 D |  ALV1 :                        2824 D |
- ALV2 :                        2853 D |  ALV3 :                        2882 D |
+ ALV0 :                        27F1 D |  ALV1 :                        2820 D |
+ ALV2 :                        284F D |  ALV3 :                        287E D |
 *ARCHITECTURE :                                        "i386-unknown-win32" - |
  BDOS_INT :                     0E0 - |  BDOS_OFFSET :                  380 D |
  BDOS_OFST :                   0B06 - |  BDOS_SEGMENT :                 382 D |
- BEGDAT :                      2775 - |  BIOS_CODE :                   2500 - |
+ BEGDAT :                      2771 - |  BIOS_CODE :                   2500 - |
 *CASESENSITIVE :                  0 - |  CCP :                            0 C |
- CCP_OFFSET :                     0 - |  CHKHD1 :                      2AAF - |
- CHKHD2 :                      2AAF - | *COMPMODE :                       0 - |
+ CCP_OFFSET :                     0 - |  CHKHD1 :                      2AAB - |
+ CHKHD2 :                      2AAB - | *COMPMODE :                       0 - |
  CONIN :                       25CB C |  CONOUT :                      25D5 C |
  CONST :                       25C1 C | *CONSTPI :        3.141592653589793 - |
  CR :                            0D - |  CSS0 :                          10 - |
  CSS1 :                          10 - |  CSS2 :                          10 - |
  CSS3 :                          10 - |  CSSHD1 :                         0 - |
-*CSSHD2 :                         0 - |  CSV0 :                        2814 D |
- CSV1 :                        2843 D |  CSV2 :                        2872 D |
- CSV3 :                        28A1 D |  DATA_OFFSET :                 2680 - |
-*DATE :                 "1/18/2024" - | *DATSIZ :                       33A - |
- DIRBUF :                      2775 D |  DISK_OP_READ :                   0 - |
+*CSSHD2 :                         0 - |  CSV0 :                        2810 D |
+ CSV1 :                        283F D |  CSV2 :                        286E D |
+ CSV3 :                        289D D |  DATA_OFFSET :                 2680 - |
+*DATE :                 "1/21/2024" - | *DATSIZ :                       33A - |
+ DIRBUF :                      2771 D |  DISK_OP_READ :                   0 - |
  DISK_OP_WRITE :                  1 - | *DISK_REG_DMAHH :                27 - |
  DISK_REG_DMAHL :                26 - | *DISK_REG_DMALH :                25 - |
  DISK_REG_DMALL :                24 - |  DISK_REG_DRIVE :                10 - |
@@ -643,23 +642,23 @@ Customized Basic I/O System
  DISK_REG_TRACK :                12 - |  DISK_ST_BUSY :                   1 - |
  DISK_ST_ERROR :                  2 - | *DISK_ST_READ :                  40 - |
 *DISK_ST_READY :                  0 - | *DISK_ST_WRITE :                 80 - |
- DPB0 :                        271D - |  DPB1 :                        271D - |
- DPB2 :                        271D - |  DPB3 :                        271D - |
- DPBASE :                      26DD - | *DPE0 :                        26DD D |
-*DPE1 :                        26ED D | *DPE2 :                        26FD D |
-*DPE3 :                        270D D |  ENDDAT :                      2AAF - |
+ DPB0 :                        2719 - |  DPB1 :                        2719 - |
+ DPB2 :                        2719 - |  DPB3 :                        2719 - |
+ DPBASE :                      26D9 - | *DPE0 :                        26D9 D |
+*DPE1 :                        26E9 D | *DPE2 :                        26F9 D |
+*DPE3 :                        2709 D |  ENDDAT :                      2AAB - |
 *FALSE :                          0 - | *FULLPMMU :                       1 - |
  GETIOBF :                     25EC C |  GETSEGT :                     2654 C |
 *HAS64 :                          0 - | *HASFPU :                         0 - |
-*HASPMMU :                        0 - |  HDB1 :                        2746 D |
- HDB2 :                        2756 D |  HDBLK :                       2766 D |
+*HASPMMU :                        0 - |  HDB1 :                        2742 D |
+ HDB2 :                        2752 D |  HDBLK :                       2762 D |
  HOME :                        262B C |  INIT :                        2583 C |
 *INSUPMODE :                      0 - | *INT0_OFFSET :                    0 D |
 *INT0_SEGMENT :                   2 D | *INT_TRAP :                    25B5 C |
- INT_TRP :                     26C1 D |  IOBYTE :                      2680 D |
- LASTOFF :                     2AF0 - |  LF :                            0A - |
+ INT_TRP :                     26BD D |  IOBYTE :                      2680 D |
+ LASTOFF :                     2AEC - |  LF :                            0A - |
 *LISTON :                         1 - |  LISTOUT :                     25E0 C |
- LISTST :                      25E3 C | *LOC_STK :                     2AB0 D |
+ LISTST :                      25E3 C | *LOC_STK :                     2AAC D |
 *MACEXP :                         7 - | *MOMCPU :                      8086 - |
 *MOMCPUNAME :                "8086" - | *NESTMAX :                      100 - |
  NON_KEY :                     25CA C |  NO_SKEW :                     2646 C |
@@ -668,27 +667,27 @@ Customized Basic I/O System
  READ :                        2658 C |  READER :                      25E9 C |
  READ_W :                      2662 C | *RELAXED :                        0 - |
  RETURN :                      25F4 C |  RW_OK :                       2671 C |
- SECTRAN :                     2639 C |  SEGTABLE :                    26D8 D |
+ SECTRAN :                     2639 C |  SEGTABLE :                    26D4 D |
  SELDSK :                      2603 C |  SELFD :                       261B C |
  SELHD :                       2628 C |  SETDMA :                      264A C |
  SETDMAB :                     264F C |  SETIOBF :                     25F0 C |
  SETSEC :                      2634 C |  SETTRK :                      262F C |
  SET_HOME :                    2631 C |  SIGNON :                      2681 D |
- STKBASE :                     2AF0 - | *TIME :                  "11:43:34" - |
+ STKBASE :                     2AEC - | *TIME :                   "17:9:57" - |
  TPA_LEN :                    0FC41 - |  TPA_SEG :                      2EF - |
 *TRUE :                           1 - | *UART_CREG :                      2 - |
 *UART_DREG :                      0 - |  UNIMON :                         1 - |
  UNI_OFF :                    0FF30 - | *UNI_SEG :                    0FF50 - |
  USARTC :                         2 - |  USARTD :                         0 - |
 *VERSION :                     142F - |  WBOOT :                       25B2 C |
- WRITE :                       2674 C |  XLT0 :                        272C - |
- XLT1 :                        272C - |  XLT2 :                        272C - |
- XLT3 :                        272C - |
+ WRITE :                       2674 C |  XLT0 :                        2728 - |
+ XLT1 :                        2728 - |  XLT2 :                        2728 - |
+ XLT3 :                        2728 - |
 
     142 symbols
      40 unused symbols
 
- AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 3 - 1/18/2024 11:43:35
+ AS V1.42 Beta [Bld 227] - Source File cbios.asm - Page 3 - 1/21/2024 17:9:58
 Customized Basic I/O System
 
 

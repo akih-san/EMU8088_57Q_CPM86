@@ -391,7 +391,7 @@ IOBYTE	db	0
 ;|                                           |
 signon	db	cr,lf,cr,lf
 	db	"CP/M-86 BIOS Generated!",cr,lf
-	db	"EMU8088/V20_RAM edition. 2023.12"
+	db	"EMU8088/V20 edition. 2024.02"
 	db	cr,lf,0
 ;|                                           |
 ;---------------------------------------------
