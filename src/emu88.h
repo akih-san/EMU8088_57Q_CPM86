@@ -17,17 +17,8 @@
 //
 
 //#define TEST_DEBUG
+
 #define USE_READY
-#define USE_PWM3
-
-#ifndef USE_READY
-#define USE_T2
-#endif
-
-#ifndef USE_PWM3
-#define USE_NCO2
-#endif
-
 
 #define P64 15.625
 

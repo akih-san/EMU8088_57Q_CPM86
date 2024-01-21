@@ -85,6 +85,10 @@ void main(void)
     // Transfer ROM image to the SRAM
 	// ROM image must fit 8088 startup address. reset vector = FFFF0h
 	//
+	/* Universal Monitor */
+	write_sram(0x100000-sizeof(rom2), (uint8_t *)rom2, sizeof(rom2));
+	printf("Load unimon = %06lx, Program size = %04x\r\n", 0x100000-sizeof(rom2), sizeof(rom2));
+	
 	/* CCP+BDOS */
 	write_sram(CCP_OFF, (uint8_t *)rom0, sizeof(rom0));
 	printf("Load CCP_BDOS = %06lx, System size = %04x\r\n", (uint32_t)CCP_OFF, sizeof(rom0));
@@ -93,19 +97,12 @@ void main(void)
 	write_sram(BIOS_OFF, (uint8_t *)rom1, sizeof(rom1));
 	printf("Load CBIOS = %06lx, System size = %04x\r\n", (uint32_t)BIOS_OFF, sizeof(rom1));
 
-	write_sram(0x100000-sizeof(rom2), (uint8_t *)rom2, sizeof(rom2));
-	printf("Load unimon = %06lx, Program size = %04x\r\n", 0x100000-sizeof(rom2), sizeof(rom2));
-	
     if (menu_select() < 0) while (1);
 
 	//
     // Start i8088
     //
-#ifdef USE_PWM3
     printf("Use PWM3  %.2f MHz for 8088 clock\n\r", 1/((PWM3PR+1)*P64)*1000);
-#else
-    printf("Use NCO %.2f MHz for 8088 clock\n\r", ((uint32_t)NCO2INC * 61 / 2) / 1000000.0);
-#endif
     printf("\n\r");
 
     start_i88();

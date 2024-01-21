@@ -133,30 +133,12 @@ static void emu88_57q_sys_init()
 	LAT(I88_CLK) = 1;	// 8088_CLK = 1
     TRIS(I88_CLK) = 0;	// set as output pin
 	
-#ifdef USE_PWM3
-#ifdef USE_T2
-#include "clc_pwm3_t2wait.c"
-#endif
-#endif
-
-#ifdef USE_PWM3
 #ifdef USE_READY
 #include "clc_pwm3_ready.c"
-#endif
-#endif
-
-#ifdef USE_NC02
-#ifdef USE_T2
-#include "clc_nco2_t2wait.c"
-#endif
+#else
+#include "clc_pwm3_t2wait.c"
 #endif
 
-#ifdef USE_NCO2
-#ifdef USE_READY
-#include "clc_nco2_ready.c"
-#endif
-#endif
-	
 	// SPI data and clock pins slew at maximum rate
    SLRCON(SPI_SD_PICO) = 0;
    SLRCON(SPI_SD_CLK) = 0;
@@ -180,59 +162,6 @@ static void emu88_57q_sys_init()
  CLK High Time : 125ns
 *************************************************/
 
-/*********** NCO2 ***********************************
- --------- NCO definition -------------
- Fosc = 64000000UL(64MHz)
- 2^20 = 1048576UL
- 
- OvrFw = Fosc * NOxINC / 1048576UL
-       = 64000000UL * NOxINC / 1048576UL
-       = NOxINC * 61.03515625
- --------------------------------------
-
- (for exsample I88_CLK = 5MHz FDC mode)
- OvrFw = I88_CLK * 2 = 5000000UL * 2 = 10000000UL
-
- 10000000UL = NOxINC * 61.03515625
- NOxINC     = 10000000UL / 61.03515625
-            = 163840
- <FDC mode>
- I88 clock frequency (select one or use external clock)
-	NCO2INC = 524288;			// CLK : 16Mhz
-	NCO2INC = 491520;			// CLK : 15Mhz
-	NCO2INC = 458752;			// CLK : 14Mhz
-	NCO2INC = 425984;			// CLK : 13Mhz
-	NCO2INC = 393216;			// CLK : 12Mhz
-	NCO2INC = 360448;			// CLK : 11Mhz
-	NCO2INC = 327680;			// CLK : 10Mhz
-	NCO2INC = 294912;			// CLK : 9Mhz
-	NCO2INC = 262144;			// CLK : 8Mhz
-	NCO2INC = 229376;			// CLK : 7Mhz
-	NCO2INC = 196608;			// CLK : 6Mhz
-	NCO2INC = 163840;			// CLK : 5Mhz
-	NCO2INC = 131072;			// CLK : 4Mhz
-	NCO2INC = 98304;			// CLK : 3Mhz
-	NCO2INC = 81920;			// CLK : 2.5Mhz
-	NCO2INC = 65536;			// CLK : 2Mhz
-	NCO2INC = 62259;			// CLK : 1.9MHz
-	NCO2INC = 32768;			// CLK : 1Mhz
-
-//(example from @Gazelle8087)
-// NCO Pulse frequency mode
-// 5.33MHz
-// H period:62.5ns L period:125nsec
-//	(NCO1INC = 0x15555 = 87381;)
-****************************************************/
-#ifdef USE_NCO2
-	NCO2INC = 131072;			// CLK : 4Mhz
-	NCO2CLK = 0x1A;				// Clock source CLC8
-//	NCO2CLK = 0x00;				// Clock source Fosc
-    NCO2PFM = 0;				// FDC mode
-	NCO2OUT = 1;				// NCO output enable
-    NCO2EN = 1;					// NCO enable
-	RB7PPS = 0x40;				// asign NCO2
-#endif
-
 /**************** PWM3 ********************
 // 8088 TIMING REQUIREMENTS(MUST)
 // CLK Low Time  : minimum 118ns
@@ -252,9 +181,6 @@ static void emu88_57q_sys_init()
 //     125ns + 78.125 = 203.125ns f = 4923076.9230769230769230769230769 Hz
 //     duty = 38.4%
 ******************************************/
-#ifdef USE_PWM3
-
-#define P64 15.625
 
 //	PWM3CLK = 0x02;		// Fsoc
 	PWM3CLK = 0x14;		// CLC8_OUT
@@ -265,7 +191,6 @@ static void emu88_57q_sys_init()
 	PWM3S1CFG = 0x00;	// (POL1, POL2)= 0, PPEN = 0 MODE = 0 (Left Aligned mode)
 	PWM3CON = 0x84;		// EN=1, LD=1
 	RB7PPS = 0x1C;		// PWM3S1P1_OUT
-#endif
 
     emu88_common_wait_for_programmer();
 
@@ -381,14 +306,21 @@ void reset_io_read_mask(void)
 void end_io_read(void)
 {
 #ifdef USE_READY
-	reset_ready_pin();			// Reset READY signal
+//	reset_ready_pin();	// Reset READY signal
+    CLCSELECT = 0;       // CLC1 select
+	G3POL = 1;
+	G3POL = 0;
 #else
-	reset_t2_mask();			// Reset T2 mask flag
-	while(!R(I88_RD)) {};		// wait for /RD to be cleared
+//	reset_t2_mask();			// Reset T2 mask flag
+    CLCSELECT = 1;       // CLC2 select
+	G3POL = 1;
+	G3POL = 0;
 #endif
+	while(!R(I88_RD)) {};		// wait for /RD to be cleared
 	TRIS(I88_DATA) = 0xff;		// Data bus is set as input
 	reset_io_read_mask();		// Release 8088_CLK
 }
+
 
 void end_io_write(void)
 {
