@@ -42,7 +42,7 @@ IOアクセスとメモリアクセスが干渉してると思われるが、
 誰か分かる方がいらっしゃったら、連絡いただけるとありがたいです。
 
 試したV20（安定して動作したのはD70108D-8）
-![EMU8088 1](photo/GESYJGmaoAAoq6Z.JPG)
+![EMU8088 V20](photo/GESYJGmaoAAoq6Z.jpg)
 
 # ファームウェア
 @hanyazouさんが作成したZ80で動作しているCP/M-80のFWをベースに<br>
