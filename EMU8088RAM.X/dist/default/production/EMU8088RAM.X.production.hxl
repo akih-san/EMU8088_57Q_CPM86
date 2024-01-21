@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o
+ C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o
  -Odist/default/production\EMU8088RAM.X.production.hex
  -logfile=dist/default/production\EMU8088RAM.X.production.hxl
  -addressing=1
@@ -9,29 +9,29 @@
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
-  8h - 105h		(C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
-  C16Eh - FFFEh		(C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
-  10000h - 1D051h		(C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
-  1D054h - 1DDBAh		(C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
-  1DDBCh - 1DDEDh		(C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
-  1DDF0h - 1DDF1h		(C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
-  300000h - 300007h		(C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
-  300009h - 300009h		(C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
+  0h - 3h		(C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
+  8h - 105h		(C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
+  C172h - FFFEh		(C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
+  10000h - 1CFEDh		(C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
+  1CFF0h - 1DD6Ah		(C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
+  1DD6Ch - 1DD9Dh		(C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
+  1DDA0h - 1DDA1h		(C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
+  300000h - 300007h		(C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
+  300009h - 300009h		(C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
  Unused ranges:
   4h - 7h
-  106h - C16Dh
+  106h - C171h
   FFFFh - FFFFh
-  1D052h - 1D053h
-  1DDBBh - 1DDBBh
-  1DDEEh - 1DDEFh
-  1DDF2h - 2FFFFFh
+  1CFEEh - 1CFEFh
+  1DD6Bh - 1DD6Bh
+  1DD9Eh - 1DD9Fh
+  1DDA2h - 2FFFFFh
   300008h - 300008h
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\TBS\AppData\Local\Temp\xcAsah4.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\akihito\AppData\Local\Temp\xcAsbas.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -53,8 +53,7 @@
 000000F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000100 | H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
-0000C160 | -- -- -- -- -- -- -- -- -- -- -- -- -- -- H1 H1
-0000C170 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C170 | -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000C180 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000C190 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000C1A0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
@@ -4381,14 +4380,14 @@
 0001CFB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001CFC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001CFD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0001CFE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0001CFE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- --
 0001CFF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001D000 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001D010 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001D020 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001D030 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001D040 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0001D050 | H1 H1 -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0001D050 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001D060 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001D070 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001D080 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
@@ -4597,16 +4596,11 @@
 0001DD30 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001DD40 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001DD50 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0001DD60 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0001DD60 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- H1 H1 H1 H1
 0001DD70 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0001DD80 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0001DD90 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0001DDA0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0001DDB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- H1 H1 H1 H1
-0001DDC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0001DDD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0001DDE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- --
-0001DDF0 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
+0001DD90 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- --
+0001DDA0 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
 00300000 | H1 H1 H1 H1 H1 H1 H1 H1 -- H1 -- -- -- -- -- --
 00300010 | --

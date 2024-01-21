@@ -8,7 +8,7 @@ build/default/production/_ext/423027577/EMU88RAM.p1:  \
 ../src/boards/../../drivers/picregister.h  \
 ../src/boards/../../drivers/SPI.h  \
 ../src/boards/emu88_common.c  \
-../src/boards/clc_pwm3_ready.c  \
+../src/boards/clc_pwm3_t2wait.c  \
 ../src/boards/../../drivers/pic18f57q43_spi.c  \
 ../src/boards/../../drivers/SDCard.c  \
 ../src/boards/../../drivers/../drivers/utils.h 
