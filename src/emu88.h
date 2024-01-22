@@ -1,8 +1,9 @@
 /*
- * UART, disk I/O and monitor firmware for SuperMEZ80-SPI
+ * UART, disk I/O and monitor firmware for EMU8088
  *
  * Based on main.c by Tetsuya Suzuki and emuz80_z80ram.c by Satoshi Okue
- * Modified by @hanyazou https://twitter.com/hanyazou
+ * Base source code by @hanyazou https://twitter.com/hanyazou
+ * Modified by Akihito Honda
  */
 #ifndef __SUPERMEZ80_H__
 #define __SUPERMEZ80_H__
@@ -18,7 +19,7 @@
 
 //#define TEST_DEBUG
 
-#define USE_READY
+//#define USE_READY
 
 #define P64 15.625
 
