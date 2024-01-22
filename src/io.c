@@ -1,8 +1,9 @@
 /*
- * UART, disk I/O and monitor firmware for SuperMEZ80-SPI
+ * UART, disk I/O and monitor firmware for EMU8088
  *
  * Based on main.c by Tetsuya Suzuki and emuz80_z80ram.c by Satoshi Okue
- * Modified by @hanyazou https://twitter.com/hanyazou
+ * Base source code by @hanyazou https://twitter.com/hanyazou
+ * Modified by Akihito Honda
  */
 /*!
  * PIC18F47Q43/PIC18F47Q83/PIC18F47Q84 ROM image uploader and UART emulation firmware
@@ -16,12 +17,13 @@
  */
 
 /*
-    PIC18F47Q43 ROM RAM and UART emulation firmware
+    PIC18F57Q43 ROM RAM and UART emulation firmware
     This single source file contains all code
+    Original source code for PIC18F47Q43 ROM RAM and UART emulation firmware
+    Designed by @hanyazou https://twitter.com/hanyazou
 
-    Target: EMUZ80 - The computer with only Z80 and PIC18F47Q43
-    Compiler: MPLAB XC8 v2.36
-    Written by Tetsuya Suzuki
+    Target: EMU8088 - The computer with only 8088/V20 and PIC18F57Q43
+    Written by Akihito Honda
 */
 
 #include "../src/emu88.h"
