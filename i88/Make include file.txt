@@ -53,10 +53,10 @@ Get-Content cbios_*.bin -Encoding Byte | Set-Content cbios.bin -Encoding Byte
 
 ４．cbios.binからインクルードファイルを作成する
 
-添付してあるbin2inc.exeを実行して、インクルードファイルを作成する。
-bin2inc.exeの出力は、コンソールになっているので、パイプ「｜」または、リダイレクト「>」を
+添付してあるmkinc.exeを実行して、インクルードファイルを作成する。
+mkinc.exeの出力は、コンソールになっているので、パイプ「｜」または、リダイレクト「>」を
 用いてファイルに出力する。
 
 (コマンド）
-.\bin2inc.exe .\cbios.bin | sc cbios.inc
+.\mkinc.exe .\cbios.bin | sc cbios.inc
 
