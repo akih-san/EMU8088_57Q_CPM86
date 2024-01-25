@@ -1,4 +1,4 @@
-/* bin2inc.c */
+/* mkinc.c */
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
