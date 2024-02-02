@@ -134,10 +134,10 @@ int getch(void) {
 uint32_t get_physical_addr(uint16_t ah, uint16_t al)
 {
 // real 32 bit address
-//	return (uint32_t)((disk_dmah << 8) | disk_dmal);
+//	return ((uint32_t)ah*0x1000 + (uint32_t)al);
 
 // 8086 : segment:offset
-	return (uint32_t)((disk_dmah << 4) + disk_dmal);
+	return ((uint32_t)ah*0x10 + (uint32_t)al);
 }
 
 /////////////////////////////////////////////////////////////////
